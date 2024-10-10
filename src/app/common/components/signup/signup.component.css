@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:host {
+    background-color: #c2c2c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.register-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+h2 {
+    text-align: center;
+    color: #2E7D32;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #2E7D32;
+    outline: none;
+}
+
+.btn-register {
+    background-color: #2E7D32;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    background-color: #1B5E20;
+}
+
+.register-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-links a {
+    color: #1E88E5;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.register-links a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+.wrapper {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 20px 5px;
+    margin-bottom: 10px;
+}
+
+.wrapper .option {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+}
+
+.wrapper .option .dot {
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+}
+
+.wrapper .option .dot::before {
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: #4c8b39;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#option-1:checked ~ .option-1,
+#option-2:checked ~ .option-2 {
+    border-color: #4c8b39;
+    background: #4c8b39;
+}
+
+#option-1:checked ~ .option-1 .dot,
+#option-2:checked ~ .option-2 .dot {
+    background: #fff;
+}
+
+#option-1:checked ~ .option-1 .dot::before,
+#option-2:checked ~ .option-2 .dot::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wrapper .option span {
+    font-size: 16px;
+    color: #808080;
+}
+
+#option-1:checked ~ .option-1 span,
+#option-2:checked ~ .option-2 span {
+    color: #fff;
+}

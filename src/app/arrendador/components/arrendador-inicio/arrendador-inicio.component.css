@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:host {
+    background-color: #F5F5F5;
+    color: #333;
+}
+
+.main-container {
+    padding: 30px;
+}
+
+.welcome-section {
+    margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+    font-size: 22px;
+    color: #2E7D32;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 16px;
+}
+
+/* Estilo de las propiedades */
+.propiedades-section {
+    margin-bottom: 40px;
+}
+
+.propiedades-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.propiedad-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.propiedad-card h4 {
+    font-size: 18px;
+    color: #2E7D32;
+}
+
+.propiedad-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.btn-detalles {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #1E88E5;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-detalles:hover {
+    background-color: #1565C0;
+}
+
+/* Estilo de las solicitudes recibidas */
+.solicitudes-section {
+    margin-top: 40px;
+}
+
+.solicitudes-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.solicitud-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.solicitud-card h4 {
+    font-size: 18px;
+    color: #2E7D32;
+}
+
+.solicitud-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+.estado {
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    color: #FFA000;
+}
+
+.estado-aceptada {
+    color: #2E7D32;
+}
+
+.btn-detalles {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #1E88E5;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-detalles:hover {
+    background-color: #1565C0;
+}

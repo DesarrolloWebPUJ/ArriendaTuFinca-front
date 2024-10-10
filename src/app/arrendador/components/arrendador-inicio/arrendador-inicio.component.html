@@ -1,0 +1,32 @@
+<app-arrendador-navbar></app-arrendador-navbar>
+
+<main class="main-container">
+    <section class="welcome-section">
+        <h2>Bienvenido, {{ arrendador.nombreCuenta }}</h2>
+        <p>Aquí puedes gestionar tus propiedades y ver las solicitudes que has recibido.</p>
+    </section>
+
+    <section class="propiedades-section">
+        <h3>Mis Propiedades</h3>
+
+        <div *ngFor="let propiedad of arrendador.propiedades" class="propiedad-card">
+            <h4>{{ propiedad.nombrePropiedad }}</h4>
+            <p>Departamento: {{ propiedad.departamento }}</p>
+            <p>Municipio: {{ propiedad.municipio }}</p>
+            <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
+            <a [routerLink]="['/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+        </div>
+    </section>
+
+    <section class="solicitudes-section">
+        <h3>Solicitudes Recibidas</h3>
+
+        <!-- <div *ngFor="let solicitud of solicitudes" class="solicitud-card">
+            <h4>{{ solicitud.propiedadNombre }}</h4>
+            <p>Arrendatario: {{ solicitud.arrendatarioNombre }}</p>
+            <p>Fecha de solicitud: {{ solicitud.fechaSolicitud | date }}</p>
+            <p>Estado: <span [ngClass]="{'estado-pendiente': solicitud.estado === 'pendiente', 'estado-aceptada': solicitud.estado === 'aceptada'}">{{ solicitud.estado }}</span></p>
+            <a [routerLink]="['/solicitud', solicitud.id]" class="btn-detalles">Ver detalles</a>
+        </div> -->
+    </section>
+</main>
