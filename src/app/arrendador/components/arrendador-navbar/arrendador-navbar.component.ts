@@ -15,11 +15,10 @@ export class ArrendadorNavbarComponent {
     private router: Router
   ) { }
 
-  navigateToProfile(){
-    this.route.params.subscribe(params => {
-      const idUsuario = params['idUsuario'];
-      this.router.navigate(['arrendador/perfil', idUsuario]);
-    })
+  navigateToProfile(event: Event){
+    event.preventDefault();
+    const idUsuario = this.route.snapshot.params['idUsuario'];
+    this.router.navigate(['arrendador/perfil', idUsuario]);
   }
 
 }

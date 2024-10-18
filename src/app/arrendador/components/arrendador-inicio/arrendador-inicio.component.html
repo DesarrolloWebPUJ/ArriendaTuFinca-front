@@ -1,5 +1,6 @@
 <app-arrendador-navbar></app-arrendador-navbar>
 
+<div class="container">
 <main class="main-container">
     <section class="welcome-section">
         <h2>Bienvenido, {{ arrendador.nombreCuenta }}</h2>
@@ -10,23 +11,30 @@
         <h3>Mis Propiedades</h3>
 
         <div *ngFor="let propiedad of arrendador.propiedades" class="propiedad-card">
-            <h4>{{ propiedad.nombrePropiedad }}</h4>
-            <p>Departamento: {{ propiedad.departamento }}</p>
-            <p>Municipio: {{ propiedad.municipio }}</p>
-            <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
-            <a [routerLink]="['/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+            <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="propiedad-imagen">
+            <div class="propiedad-detalles">
+                <h4>{{ propiedad.nombrePropiedad }}</h4>
+                <p>Departamento: {{ propiedad.departamento }}</p>
+                <p>Municipio: {{ propiedad.municipio }}</p>
+                <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
+                <div class="botones">
+                    <a [routerLink]="['/editar-propiedad', propiedad.idPropiedad]" class="btn-editar">Editar</a>
+                    <a [routerLink]="['/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="solicitudes-section">
+    <section class="solicitudes-section" *ngIf="solicitudesCargadas">
         <h3>Solicitudes Recibidas</h3>
 
-        <!-- <div *ngFor="let solicitud of solicitudes" class="solicitud-card">
-            <h4>{{ solicitud.propiedadNombre }}</h4>
-            <p>Arrendatario: {{ solicitud.arrendatarioNombre }}</p>
-            <p>Fecha de solicitud: {{ solicitud.fechaSolicitud | date }}</p>
-            <p>Estado: <span [ngClass]="{'estado-pendiente': solicitud.estado === 'pendiente', 'estado-aceptada': solicitud.estado === 'aceptada'}">{{ solicitud.estado }}</span></p>
-            <a [routerLink]="['/solicitud', solicitud.id]" class="btn-detalles">Ver detalles</a>
-        </div> -->
+        <div *ngFor="let solicitud of solicitudes" class="solicitud-card" >
+            <h4>Solicitud para la propiedad: {{ solicitud?.propiedad?.nombrePropiedad }}</h4>
+            <p>Arrendatario: {{ solicitud?.arrendatario?.nombreCuenta }}</p>
+            <p>Fecha de solicitud: {{ solicitud.fechaCreacion | fechaYHora }}</p>
+            <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
+            <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+        </div>
     </section>
 </main>
+</div>

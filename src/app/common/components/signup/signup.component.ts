@@ -18,7 +18,9 @@ export class SignupComponent {
 
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private arrendatarioService: ArrendatarioService, private arrendadorService: ArrendadorService) {
+  constructor(private fb: FormBuilder, 
+    private arrendatarioService: ArrendatarioService, 
+    private arrendadorService: ArrendadorService) {
     this.signupForm = this.initForm(fb);
   }
 
@@ -81,19 +83,17 @@ export class SignupComponent {
 
   registerUserByUserType(newUser: CuentaDTO) {
     if (this.signupForm.value.userType === 'arrendatario') {
-      alert('Arrendatario registrado exitosamente');
-      // this.arrendatarioService.saveNewArrendatario(newUser, this.signupForm.value.password).then(() => {
-      //   alert('Arrendatario registrado exitosamente');
-      // }).catch(error => {
-      //   alert(error.message);
-      // });
+      this.arrendatarioService.saveNewArrendatario(newUser, this.signupForm.value.password).then(() => {
+        alert('Arrendatario registrado exitosamente');
+      }).catch(error => {
+        alert(error.message);
+      });
     } else {
-      alert('Arrendador registrado exitosamente');
-      // this.arrendadorService.saveNewArrendador(newUser, this.signupForm.value.password).then(() => {
-      //   alert('Arrendador registrado exitosamente');
-      // }).catch(error => {
-      //   alert(error.message);
-      // });
+      this.arrendadorService.saveNewArrendador(newUser, this.signupForm.value.password).then(() => {
+        alert('Arrendador registrado exitosamente');
+      }).catch(error => {
+        alert(error.message);
+      });
     }
   }
 }
