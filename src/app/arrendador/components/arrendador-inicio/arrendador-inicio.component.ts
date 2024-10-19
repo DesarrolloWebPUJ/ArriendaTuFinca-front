@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ArrendadorNavbarComponent } from "../arrendador-navbar/arrendador-navbar.component";
 import { ArrendadorDTO } from '../../../common/models/ArrendadorDTO';
 import { ArrendadorService } from '../../../common/services/arrendador.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SolicitudService } from '../../../common/services/solicitud.service';
 import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { FechaYHoraPipe } from "../../../common/pipes/fecha-yhora.pipe";
+import { AuthService } from '../../../common/services/auth.service';
 
 @Component({
   selector: 'app-arrendador-inicio',
@@ -33,20 +34,16 @@ export class ArrendadorInicioComponent {
   constructor(
     private arrendadorService: ArrendadorService,
     private solicitudService: SolicitudService,
-    private route: ActivatedRoute
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe({
-      next: params => {
-        const idArrendador = params['idUsuario'];
-        this.loadArrendadorData(idArrendador);
-        this.loadSolicitudesData(idArrendador);
-      },
-      error: error => {
-        console.error('Error fetching route params:', error);
-      }
-    });
+    let idArrendador = this.authService.getCurrentUser()?.idCuenta;
+    if (idArrendador) {
+      this.loadArrendadorData(idArrendador);
+      this.loadSolicitudesData(idArrendador);
+    }
   }
 
   private async loadArrendadorData(idArrendador: number): Promise<void> {
@@ -77,6 +74,6 @@ export class ArrendadorInicioComponent {
         default:
             return '';
     }
-}
+  }
 
 }

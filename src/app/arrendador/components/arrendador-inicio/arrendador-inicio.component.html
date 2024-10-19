@@ -4,37 +4,53 @@
 <main class="main-container">
     <section class="welcome-section">
         <h2>Bienvenido, {{ arrendador.nombreCuenta }}</h2>
-        <p>Aquí puedes gestionar tus propiedades y ver las solicitudes que has recibido.</p>
+        <p>Aquí puedes ver algunas de tus propiedades y ver las solicitudes más recientes que has recibido.</p>
     </section>
 
     <section class="propiedades-section">
         <h3>Mis Propiedades</h3>
 
-        <div *ngFor="let propiedad of arrendador.propiedades" class="propiedad-card">
-            <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="propiedad-imagen">
-            <div class="propiedad-detalles">
-                <h4>{{ propiedad.nombrePropiedad }}</h4>
-                <p>Departamento: {{ propiedad.departamento }}</p>
-                <p>Municipio: {{ propiedad.municipio }}</p>
-                <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
-                <div class="botones">
-                    <a [routerLink]="['/editar-propiedad', propiedad.idPropiedad]" class="btn-editar">Editar</a>
-                    <a [routerLink]="['/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+        <div *ngIf="arrendador.propiedades && arrendador.propiedades.length > 0; else noPropiedades">
+            <div *ngFor="let propiedad of arrendador.propiedades" class="propiedad-card">
+                <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="propiedad-imagen">
+                <div class="propiedad-detalles">
+                    <h4>{{ propiedad.nombrePropiedad }}</h4>
+                    <p>Departamento: {{ propiedad.departamento }}</p>
+                    <p>Municipio: {{ propiedad.municipio }}</p>
+                    <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
+                    <div class="botones">
+                        <a [routerLink]="['/arrendador/editar-propiedad', propiedad.idPropiedad]" class="btn-editar">Editar</a>
+                        <a [routerLink]="['/arrendador/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <ng-template #noPropiedades>
+            <div class="no-items-card">
+                <p>No tienes propiedades registradas.</p>
+                <p>¡Empieza creando una propiedad!</p>
+                <a [routerLink]="['/arrendador/crear-propiedad']" class="btn-crear">Crear Propiedad</a>
+            </div>
+        </ng-template>
     </section>
 
     <section class="solicitudes-section" *ngIf="solicitudesCargadas">
         <h3>Solicitudes Recibidas</h3>
 
-        <div *ngFor="let solicitud of solicitudes" class="solicitud-card" >
-            <h4>Solicitud para la propiedad: {{ solicitud?.propiedad?.nombrePropiedad }}</h4>
-            <p>Arrendatario: {{ solicitud?.arrendatario?.nombreCuenta }}</p>
-            <p>Fecha de solicitud: {{ solicitud.fechaCreacion | fechaYHora }}</p>
-            <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
-            <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+        <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
+            <div *ngFor="let solicitud of solicitudes" class="solicitud-card">
+                <h4>Solicitud para la propiedad: {{ solicitud?.propiedad?.nombrePropiedad }}</h4>
+                <p>Arrendatario: {{ solicitud?.arrendatario?.nombreCuenta }}</p>
+                <p>Fecha de solicitud: {{ solicitud.fechaCreacion | fechaYHora }}</p>
+                <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
+                <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+            </div>
         </div>
+        <ng-template #noSolicitudes>
+            <div class="no-items-card">
+                <p>No han llegado solicitudes.</p>
+            </div>
+        </ng-template>
     </section>
 </main>
 </div>

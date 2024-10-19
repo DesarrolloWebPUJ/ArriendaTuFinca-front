@@ -22,7 +22,7 @@ export class ArrendadorService {
   }
 
   saveNewArrendador(arrendador: CuentaDTO, contrasena: String): Promise<CuentaDTO> {
-    return axios.post<CuentaDTO>(this.apiUrl, {arrendador, contrasena}).then(response => response.data);
+    return axios.post<CuentaDTO>(this.apiUrl, {cuenta: arrendador, contrasena}).then(response => response.data);
   }
 
   updateArrendador(arrendador: CuentaDTO): Promise<CuentaDTO> {

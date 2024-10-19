@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { FormFieldErrorDirective } from '../../directives/form-field-error.directive';
 import { UsuarioService } from '../../services/usuario.service';
 import { CuentaDTO } from '../../models/CuentaDTO';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { UserRole } from '../../models/enums/UserRole';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +18,10 @@ import { CuentaDTO } from '../../models/CuentaDTO';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService) {
+  constructor(private fb: FormBuilder, 
+    private router : Router,
+    private authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -34,13 +40,21 @@ export class LoginComponent {
   }
 
   async checkLogin(){
-    try{
-      const cuenta = await this.usuarioService.login(this.loginForm.value.email, this.loginForm.value.password);
-      console.log(cuenta);
-      alert('Hola ' + cuenta.nombreCuenta);
-    } catch (error) {
-      alert('Usuario o contraseña incorrectos');
-      //console.error(error);
+    await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+    if(this.authService.isAuthenticated()){
+      console.log('Login successful');
+      this.acces();
+    } else {
+      alert('Correo o contraseña incorrectos');
+    }
+  }
+
+  private acces(){
+    const rol = this.authService.getUserRole();
+    if (rol === UserRole.Arrendador) {
+      this.router.navigate(['/arrendador']);
+    } else{
+      this.router.navigate(['/arrendatario']);
     }
   }
   

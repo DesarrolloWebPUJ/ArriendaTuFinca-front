@@ -6,6 +6,8 @@ import { ArrendadorService } from '../../services/arrendador.service';
 import { CommonModule } from '@angular/common';
 import { FormFieldErrorDirective } from '../../directives/form-field-error.directive';
 import { CustomValidators } from '../../validators/custom-validators';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +22,10 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, 
     private arrendatarioService: ArrendatarioService, 
-    private arrendadorService: ArrendadorService) {
+    private arrendadorService: ArrendadorService,
+    private authService : AuthService,
+    private router: Router
+  ) {
     this.signupForm = this.initForm(fb);
   }
 
@@ -46,7 +51,10 @@ export class SignupComponent {
         validators: [Validators.required, Validators.minLength(8)], 
         updateOn: '' 
       }],
-      userType: ['arrendatario']
+      userType: ['arrendatario', {
+        validator: [Validators.required],
+        updateOn: 'change'
+      }], 
     }, { validators: CustomValidators.passwordMatchValidator(),
       updateOn: 'blur'
      });
@@ -81,19 +89,33 @@ export class SignupComponent {
     }
   }
 
-  registerUserByUserType(newUser: CuentaDTO) {
-    if (this.signupForm.value.userType === 'arrendatario') {
-      this.arrendatarioService.saveNewArrendatario(newUser, this.signupForm.value.password).then(() => {
+  private async registerUserByUserType(newUser: CuentaDTO) {
+    let registroExitoso = false;
+    const userType = this.signupForm.get('userType')!.value;
+    if (userType === 'arrendatario') {
+      await this.arrendatarioService.saveNewArrendatario(newUser, this.signupForm.value.password).then(() => {
         alert('Arrendatario registrado exitosamente');
+        registroExitoso = true;
       }).catch(error => {
         alert(error.message);
       });
+
     } else {
-      this.arrendadorService.saveNewArrendador(newUser, this.signupForm.value.password).then(() => {
+      await this.arrendadorService.saveNewArrendador(newUser, this.signupForm.value.password).then(() => {
         alert('Arrendador registrado exitosamente');
+        registroExitoso = true;
       }).catch(error => {
         alert(error.message);
       });
+    }
+
+    if (registroExitoso) {
+      await this.authService.login(this.signupForm.value.email, this.signupForm.value.password);
+      let path = '/arrendador';
+      if (this.signupForm.value.userType === 'arrendatario') {
+        path = '/arrendatario';
+      }
+      this.router.navigate([path]);
     }
   }
 }

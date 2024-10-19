@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../common/services/auth.service';
 
 @Component({
   selector: 'app-arrendador-navbar',
@@ -12,13 +13,19 @@ export class ArrendadorNavbarComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   navigateToProfile(event: Event){
     event.preventDefault();
-    const idUsuario = this.route.snapshot.params['idUsuario'];
-    this.router.navigate(['arrendador/perfil', idUsuario]);
+    this.router.navigate(['arrendador/perfil']);
+  }
+
+  logOut(event : Event){
+    event.preventDefault();
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 
 }

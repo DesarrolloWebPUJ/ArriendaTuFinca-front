@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArrendadorDTO } from '../../../common/models/ArrendadorDTO';
 import { ArrendadorService } from '../../../common/services/arrendador.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../common/services/auth.service';
 
 @Component({
   selector: 'app-arrendador-perfil',
@@ -16,22 +17,21 @@ export class ArrendadorPerfilComponent {
 
   constructor(
     private arrendadorService: ArrendadorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.arrendador = new ArrendadorDTO();
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.route.params.subscribe(params => {
-      const idArrendador = params['idUsuario'];
+    const idArrendador = this.authService.getCurrentUser()?.idCuenta;
+    if (idArrendador) {
       this.arrendadorService.getArrendador(idArrendador).then(arrendador => {
         this.arrendador = arrendador;
       }).catch((error) => {
         console.error(error);
       });
-    });
+    }
   }
 
 }
