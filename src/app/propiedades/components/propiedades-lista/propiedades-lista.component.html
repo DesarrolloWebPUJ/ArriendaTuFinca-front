@@ -1,0 +1,19 @@
+<div class="propiedades-container">
+    <h2>Mis Propiedades</h2>
+    <div *ngFor="let propiedad of propiedades" class="propiedad-card">
+      <h3>{{ propiedad.nombrePropiedad }}</h3>
+      <p>{{ propiedad.descripcionPropiedad }}</p>
+      <p><strong>Ubicación:</strong> {{ propiedad.municipio }}, {{ propiedad.departamento }}</p>
+      <p><strong>Valor por noche:</strong> {{ propiedad.valorNoche  }}</p>
+      <p><strong>Calificación:</strong> {{ propiedad.puntajePromedio }} ({{ propiedad.cantidadCalificaciones }} calificaciones)</p>
+      <p><strong>Arrendador:</strong> {{ propiedad.arrendador.nombre }} (ID: {{ propiedad.arrendador.idCuenta }})</p>
+      <p *ngIf="propiedad.solicitudes.length > 0">
+        <strong>Solicitudes:</strong>
+        <ul>
+          <li *ngFor="let solicitud of propiedad.solicitudes">
+            {{ solicitud.descripcion }} (Estado: {{ solicitud.estado }})
+          </li>
+        </ul>
+    </div>
+  </div>
+  

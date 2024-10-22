@@ -1,0 +1,47 @@
+<div class="form-container">
+    <h2>{{ editMode ? 'Editar Propiedad' : 'Crear Propiedad' }}</h2>
+  
+      <label for="nombrePropiedad">Nombre de la propiedad:</label>
+      <input id="nombrePropiedad" formControlName="nombrePropiedad" type="text" />
+  
+      <label for="descripcionPropiedad">Descripción:</label>
+      <textarea id="descripcionPropiedad" formControlName="descripcionPropiedad"></textarea>
+  
+      <label for="municipio">Municipio:</label>
+      <input id="municipio" formControlName="municipio" type="text" />
+  
+      <label for="departamento">Departamento:</label>
+      <input id="departamento" formControlName="departamento" type="text" />
+  
+      <label for="tipoIngreso">Tipo de Ingreso:</label>
+      <input id="tipoIngreso" formControlName="tipoIngreso" type="text" />
+  
+      <label for="cantidadHabitaciones">Cantidad de Habitaciones:</label>
+      <input id="cantidadHabitaciones" formControlName="cantidadHabitaciones" type="number" />
+  
+      <label for="cantidadBanos">Cantidad de Baños:</label>
+      <input id="cantidadBanos" formControlName="cantidadBanos" type="number" />
+  
+      <label>
+        <input type="checkbox" formControlName="permiteMascotas" />
+        Permite Mascotas
+      </label>
+  
+      <label>
+        <input type="checkbox" formControlName="tienePiscina" />
+        Tiene Piscina
+      </label>
+  
+      <label>
+        <input type="checkbox" formControlName="tieneAsador" />
+        Tiene Asador
+      </label>
+  
+      <label for="valorNoche">Valor por noche:</label>
+      <input id="valorNoche" formControlName="valorNoche" type="number" />
+  
+      <button type="submit" [disabled]="propiedadForm.invalid">
+        {{ editMode ? 'Actualizar Propiedad' : 'Crear Propiedad' }}
+      </button>
+  </div>
+  
