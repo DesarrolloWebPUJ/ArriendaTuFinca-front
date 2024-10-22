@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldErrorDirective } from '../../directives/form-field-error.directive';
-import { UsuarioService } from '../../services/usuario.service';
-import { CuentaDTO } from '../../models/CuentaDTO';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { UserRole } from '../../models/enums/UserRole';

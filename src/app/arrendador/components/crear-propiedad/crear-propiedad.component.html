@@ -1,0 +1,101 @@
+<app-arrendador-navbar></app-arrendador-navbar>
+
+<div class="form-container">
+  <form [formGroup]="propiedadForm" (ngSubmit)="onSubmit()">
+    <!-- Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" placeholder="Ingresa el nombre de la propiedad" required />
+      <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('nombre')!"></div></small>
+    </div>
+
+    <!-- Departamento -->
+    <div class="form-group">
+      <label for="departamento">Departamento</label>
+      <ng-select
+        [items]="departamentos"
+        placeholder="Selecciona un departamento"
+        formControlName="departamento"
+        (ngModelChange)="onDepartamentoChange($event)"
+        [searchable]="true">
+      </ng-select>
+      <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('departamento')!"></div></small>
+    </div>
+
+    <!-- Municipio -->
+    <div class="form-group">
+      <label for="municipio">Municipio</label>
+      <ng-select
+        [items]="municipios"
+        placeholder="Selecciona un municipio"
+        formControlName="municipio"
+        [disabled]="!municipios.length"
+        [searchable]="true">
+      </ng-select>
+      <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('municipio')!"></div></small>
+    </div>
+
+    <!-- Tipo de ingreso -->
+    <div class="form-group">
+      <label for="tipoIngreso">Tipo de ingreso</label>
+      <select id="tipoIngreso" formControlName="tipoIngreso">
+        <option value="En el municipio">En el municipio</option>
+        <option value="Carretera principal">Carretera principal</option>
+        <option value="Carretera secundaria">Carretera secundaria</option>
+        <option value="Carretera terciaria">Carretera terciaria</option>
+      </select>
+      <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('tipoIngreso')!"></div></small>
+    </div>
+
+    <!-- Descripción -->
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" rows="4" placeholder="Describe la propiedad..." required></textarea>
+      <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('descripcion')!"></div></small>
+    </div>
+
+    <div class="form-group small-inputs">
+      <div>
+        <label for="habitaciones">Habitaciones</label>
+        <input id="habitaciones" type="number" formControlName="habitaciones" placeholder="Nº" required />
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('habitaciones')!"></div></small>
+      </div>
+
+      <div>
+        <label for="baños">Baños</label>
+        <input id="baños" type="number" formControlName="baños" placeholder="Nº" required />
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('baños')!"></div></small>
+      </div>
+
+      <div>
+        <label for="valorNoche">Valor noche</label>
+        <input id="valorNoche" type="number" formControlName="valorNoche" placeholder="Costo" required />
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('valorNoche')!"></div></small>
+      </div>
+    </div>
+
+    <!-- Agrupación de checkboxes -->
+    <div class="form-group checkbox-group">
+      <div class="checkbox-wrapper-custom">
+        <input id="mascotas" type="checkbox" formControlName="mascotas" class="custom-checkbox"/>
+        <label for="mascotas" class="checkbox-label">Permite mascotas</label>
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('mascotas')!"></div></small>
+      </div>
+    
+      <div class="checkbox-wrapper-custom">
+        <input id="piscina" type="checkbox" formControlName="piscina" class="custom-checkbox"/>
+        <label for="piscina" class="checkbox-label">Tiene piscina</label>
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('piscina')!"></div></small>
+      </div>
+    
+      <div class="checkbox-wrapper-custom">
+        <input id="asador" type="checkbox" formControlName="asador" class="custom-checkbox"/>
+        <label for="asador" class="checkbox-label">Tiene asador</label>
+        <small><div class="error-message" appFormFieldError [control]="propiedadForm.get('asador')!"></div></small>
+      </div>
+    </div>
+
+    <!-- Botón de envío -->
+    <button type="submit" [disabled]="!propiedadForm.valid">Crear Propiedad</button>
+  </form>
+</div>

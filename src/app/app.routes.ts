@@ -4,11 +4,13 @@ import { SignupComponent } from './common/components/signup/signup.component';
 import { ArrendadorInicioComponent } from './arrendador/components/arrendador-inicio/arrendador-inicio.component';
 import { ArrendadorPerfilComponent } from './arrendador/components/arrendador-perfil/arrendador-perfil.component';
 import { simpleAuthGuard } from './common/guards/simple-auth.guard';
+import { CrearPropiedadComponent } from './arrendador/components/crear-propiedad/crear-propiedad.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
     { path:'arrendador', component: ArrendadorInicioComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/perfil', component: ArrendadorPerfilComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador/crear-propiedad', component: CrearPropiedadComponent, canActivate: [simpleAuthGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

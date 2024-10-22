@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  :host {
+    background-color: #F5F5F5;
+    color: #333;
+  }
+  
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 40px;
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+    max-height: 100vh; /* Tamaño máximo del contenedor */
+}
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 10px;/* Tamaño máximo del formulario */
+}
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    resize: none;
+  }
+  
+
+  
+  button[type="submit"] {
+    background-color: #1976D2;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1565C0;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    font-size: 12px;
+    color: #d9534f;
+  }
+
+  .small-inputs {
+    display: flex;
+    gap: 20px;
+}
+
+.small-inputs > div {
+    flex: 1;
+}
+
+/* Agrupación de los checkboxes en fila */
+.checkbox-group {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en una fila */
+    gap: 20px; /* Espacio entre cada checkbox */
+  }
+  
+  .checkbox-wrapper-custom {
+    display: flex;
+    align-items: center; /* Centra verticalmente el checkbox y el label */
+    position: relative;
+  }
+  
+  .custom-checkbox {
+    /* Oculta el checkbox por defecto */
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .checkbox-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px; /* Espacio para el checkbox personalizado */
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+  }
+  
+  /* Estilos para el checkbox personalizado (el cuadrado) */
+  .checkbox-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Alinea verticalmente el checkbox */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Efecto al hacer check: el checkbox se vuelve verde */
+  .custom-checkbox:checked + .checkbox-label::before {
+    background-color: #4caf50; /* Color verde cuando está seleccionado */
+    border-color: #4caf50;
+  }
+  
+  /* Ajustes a la marca de "chulo" (check) para que quede centrado */
+  .custom-checkbox:checked + .checkbox-label::after {
+    content: '✔';
+    position: absolute;
+    left: 5px; /* Ajuste horizontal */
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical */
+    font-size: 14px;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  /* Efecto hover sobre el label */
+  .checkbox-label:hover::before {
+    border-color: #888;
+  }
+  
