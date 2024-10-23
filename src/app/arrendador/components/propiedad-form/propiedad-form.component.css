@@ -57,7 +57,10 @@ form {
     resize: none;
   }
   
-
+  .button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+  }
   
   button[type="submit"] {
     background-color: #1976D2;

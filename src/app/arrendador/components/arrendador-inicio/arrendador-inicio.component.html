@@ -11,25 +11,16 @@
         <h3>Mis Propiedades</h3>
 
         <div *ngIf="arrendador.propiedades && arrendador.propiedades.length > 0; else noPropiedades">
-            <div *ngFor="let propiedad of arrendador.propiedades" class="propiedad-card">
-                <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="propiedad-imagen">
-                <div class="propiedad-detalles">
-                    <h4>{{ propiedad.nombrePropiedad }}</h4>
-                    <p>Departamento: {{ propiedad.departamento }}</p>
-                    <p>Municipio: {{ propiedad.municipio }}</p>
-                    <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
-                    <div class="botones">
-                        <a [routerLink]="['/arrendador/editar-propiedad', propiedad.idPropiedad]" class="btn-editar">Editar</a>
-                        <a [routerLink]="['/arrendador/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
+            <app-propiedad-card
+                [propiedades]="arrendador.propiedades"
+                [isArrendador]="this.isArrendador">
+            </app-propiedad-card>
         </div>
         <ng-template #noPropiedades>
             <div class="no-items-card">
                 <p>No tienes propiedades registradas.</p>
                 <p>¡Empieza creando una propiedad!</p>
-                <a [routerLink]="['/arrendador/crear-propiedad']" class="btn-crear">Crear Propiedad</a>
+                <a [routerLink]="['/arrendador/propiedades/crear-propiedad']" class="btn-crear">Crear Propiedad</a>
             </div>
         </ng-template>
     </section>

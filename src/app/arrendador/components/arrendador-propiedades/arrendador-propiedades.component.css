@@ -13,85 +13,18 @@
 .container {
     max-width: 1000px;
     margin: 0 auto;
-}
-
-.main-container {
     padding: 30px;
 }
 
-.welcome-section {
+.first-section {
     margin-bottom: 30px;
 }
 
-.welcome-section h2 {
+.first-section h2 {
     font-size: 25px;
-    color: #2E7D32;
+    color: #000000;
     margin-bottom: 10px;
 }
-
-.welcome-section p {
-    font-size: 16px;
-}
-
-.propiedades-section {
-    margin-bottom: 40px;
-}
-
-.propiedades-section h3 {
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-
-/* Estilo de las solicitudes recibidas */
-.solicitudes-section {
-    margin-top: 40px;
-}
-
-.solicitudes-section h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.solicitud-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.solicitud-card h4 {
-    font-size: 18px;
-    color: #2E7D32;
-    margin-bottom: 10px;
-}
-
-.solicitud-card p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.solicitud-card .btn-detalles {
-    position: absolute; 
-    bottom: 20px; 
-    right: 20px; 
-}
-
-.estado {
-    font-weight: bold;
-}
-
-.estado-pendiente {
-    color: #FFA000;
-}
-
-.estado-aceptada {
-    color: #2E7D32;
-}
-
 /* Estilo para los mensajes de no propiedades y no solicitudes */
 .no-items-card {
     display: flex;

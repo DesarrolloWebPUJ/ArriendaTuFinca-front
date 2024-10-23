@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import axios from 'axios';
+import { PropiedadDTO } from '../models/Propiedad/PropiedadDTO';
+import { SimplePropiedadDTO } from '../models/Propiedad/SimplePropiedadDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +19,25 @@ export class PropiedadService {
 
   getMunicipios(departamento: String) : Promise<String[]> {
     return axios.get<String[]>(`${this.apiUrl}/${departamento}/municipios`).then(response => response.data);
+  }
+
+  getPropiedades() : Promise<PropiedadDTO[]> {
+    return axios.get<PropiedadDTO[]>(`${this.apiUrl}`).then(response => response.data);
+  }
+
+  getPropiedad(id: number) : Promise<PropiedadDTO> {
+    return axios.get<PropiedadDTO>(`${this.apiUrl}/${id}`).then(response => response.data);
+  }
+
+  saveNewPropiedad(propiedad: SimplePropiedadDTO) : Promise<SimplePropiedadDTO> {
+    return axios.post<SimplePropiedadDTO>(`${this.apiUrl}`, propiedad).then(response => response.data);
+  }
+
+  updatePropiedad(propiedad: SimplePropiedadDTO) : Promise<SimplePropiedadDTO> {
+    return axios.put<SimplePropiedadDTO>(`${this.apiUrl}`, propiedad).then(response => response.data);
+  }
+
+  desactivarPropiedad(id: number) : Promise<void> {
+    return axios.delete<void>(`${this.apiUrl}/${id}`).then(response => response.data);
   }
 }

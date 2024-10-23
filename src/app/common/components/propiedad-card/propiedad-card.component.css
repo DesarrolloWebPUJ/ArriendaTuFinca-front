@@ -1,0 +1,78 @@
+/* Estilo de las propiedades */
+.propiedad-card {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    align-items: flex-start; /* Alinea verticalmente la imagen y el texto */
+}
+
+.propiedad-imagen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.propiedad-detalles {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.propiedad-card h4 {
+    font-size: 20px;
+    color: #2E7D32;
+    margin: 0;
+}
+
+.propiedad-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 4px;
+    line-height: 1.8;
+    padding: 0;
+}
+
+.botones{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+}
+
+.botones-arrendador {
+    display: flex;
+    gap: 10px; /* Aumenta el espacio entre los botones */
+}
+
+.btn-detalles, .btn-editar {
+    display: inline-block;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.btn-detalles {
+    background-color: #388E3C; /* Verde oscuro */
+}
+
+.btn-editar {
+    background-color: #1976D2; /* Azul */
+}
+
+.btn-detalles:hover {
+    background-color: #2E7D32; /* Verde más oscuro */
+}
+
+.btn-editar:hover {
+    background-color: #1565C0; /* Azul más oscuro */
+}

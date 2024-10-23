@@ -1,6 +1,7 @@
 <app-arrendador-navbar></app-arrendador-navbar>
 
 <div class="form-container">
+  <h2>{{ editMode ? 'Editar Propiedad' : 'Crear Propiedad' }}</h2>
   <form [formGroup]="propiedadForm" (ngSubmit)="onSubmit()">
     <!-- Nombre -->
     <div class="form-group">
@@ -96,6 +97,10 @@
     </div>
 
     <!-- Botón de envío -->
-    <button type="submit" [disabled]="!propiedadForm.valid">Crear Propiedad</button>
+    <div class="button-container">
+      <button type="submit" [disabled]="!propiedadForm.valid">
+        {{ editMode ? 'Actualizar Propiedad' : 'Crear Propiedad' }}
+      </button>
+    </div>
   </form>
 </div>

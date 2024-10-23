@@ -1,0 +1,18 @@
+<div *ngFor="let propiedad of propiedades" class="propiedad-card">
+    <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="propiedad-imagen">
+    <div class="propiedad-detalles">
+        <h4>{{ propiedad.nombrePropiedad }}</h4>
+        <p>Departamento: {{ propiedad.departamento }}</p>
+        <p>Municipio: {{ propiedad.municipio }}</p>
+        <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
+        <div class="botones">
+            <div *ngIf="isArrendador; else botonesArrendatario" class="botones-arrendador">
+                <a [routerLink]="['/arrendador/propiedades/editar', propiedad.idPropiedad]" class="btn-editar">Editar</a>
+                <a [routerLink]="['/arrendador/propiedades', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+            </div>
+            <ng-template #botonesArrendatario>
+                <a [routerLink]="['/arrendatario/propiedades/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrearPropiedadComponent } from './crear-propiedad.component';
+import { PropiedadFormComponent } from './propiedad-form.component';
 
 describe('CrearPropiedadComponent', () => {
-  let component: CrearPropiedadComponent;
-  let fixture: ComponentFixture<CrearPropiedadComponent>;
+  let component: PropiedadFormComponent;
+  let fixture: ComponentFixture<PropiedadFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrearPropiedadComponent]
+      imports: [PropiedadFormComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CrearPropiedadComponent);
+    fixture = TestBed.createComponent(PropiedadFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -28,4 +28,14 @@ export class ArrendadorNavbarComponent {
     this.router.navigate(['']);
   }
 
+  navigateToHome(event: Event){
+    event.preventDefault();
+    this.router.navigate(['arrendador']);
+  }
+
+  navigateToProperties(event: Event){
+    event.preventDefault();
+    this.router.navigate(['arrendador/propiedades']);
+  }
+
 }

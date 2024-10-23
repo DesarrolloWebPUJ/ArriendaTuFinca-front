@@ -1,8 +1,8 @@
 <header class="navbar">
-    <h1>ArriendaTuFinca</h1>
+    <h1><a href="/arrendador" (click)="navigateToHome($event)">ArriendaTuFinca</a></h1>
     <nav>
         <ul>
-            <li><a href="javascript:void(0)">Mis propiedades</a></li>
+            <li><a href="/mis-propiedades" (click)="navigateToProperties($event)">Mis propiedades</a></li>
             <li><a href="javascript:void(0)">Solicitudes recibidas</a></li>
             <li><a href="/perfil" (click)="navigateToProfile($event)">Perfil</a></li>
             <li><a href="/" (click)="logOut($event)">Cerrar sesión</a></li>

@@ -6,23 +6,30 @@ import { FormFieldErrorDirective } from '../../../common/directives/form-field-e
 import { PropiedadService } from '../../../common/services/propiedad.service';
 import { AuthService } from '../../../common/services/auth.service';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PropiedadDTO } from '../../../common/models/Propiedad/PropiedadDTO';
 
 @Component({
   selector: 'app-crear-propiedad',
   standalone: true,
   imports: [ArrendadorNavbarComponent, CommonModule, ReactiveFormsModule, FormFieldErrorDirective, NgSelectComponent, NgOptionTemplateDirective, NgLabelTemplateDirective],
-  templateUrl: './crear-propiedad.component.html',
-  styleUrls: ['./crear-propiedad.component.css']
+  templateUrl: './propiedad-form.component.html',
+  styleUrls: ['./propiedad-form.component.css']
 })
-export class CrearPropiedadComponent implements OnInit{
+export class PropiedadFormComponent implements OnInit{
   propiedadForm!: FormGroup;
   departamentos: String[] = [];
   municipios: String[] = [];
   departamentoSeleccionado: string | null = null;
+  propiedadId: number | null = null;
+  editMode = false;
+  propiedadInicializada = false;
 
   constructor(private fb: FormBuilder, 
     private propiedadService: PropiedadService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.propiedadForm = this.initForm(fb);
   }
@@ -33,8 +40,12 @@ export class CrearPropiedadComponent implements OnInit{
       this.loadDepartamentos();
     }
 
-    this.propiedadForm.get('departamento')?.valueChanges.subscribe(value => {
-      console.log('Valor del departamento:', value);
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.propiedadId = params['id'];
+        this.editMode = true;
+        this.loadPropiedad();
+      }
     });
   }
 
@@ -54,15 +65,51 @@ export class CrearPropiedadComponent implements OnInit{
       })
   }
 
+  async loadPropiedad(): Promise<void> {
+    if (this.propiedadId) {
+      const propiedad = await this.propiedadService.getPropiedad(this.propiedadId);
+      if (this.isArrendadorCorrecto(propiedad)){
+        this.propiedadForm.patchValue({
+          nombre: propiedad.nombrePropiedad,
+          descripcion: propiedad.descripcionPropiedad,
+          municipio: propiedad.municipio,
+          departamento: propiedad.departamento,
+          tipoIngreso: propiedad.tipoIngreso,
+          habitaciones: propiedad.cantidadHabitaciones,
+          baños: propiedad.cantidadBanos,
+          mascotas: propiedad.permiteMascotas,
+          piscina: propiedad.tienePiscina,
+          asador: propiedad.tieneAsador,
+          valorNoche: propiedad.valorNoche
+        });
+        await this.loadDepartamentos();
+        this.propiedadForm.get('municipio')?.setValue(propiedad.municipio);
+        this.propiedadInicializada = true;
+      }
+      else{
+        if (typeof window !== 'undefined') {
+          alert('Propiedad no váida');
+        }
+        this.router.navigate(['/login']);
+      }
+    }
+  }
+
   private async loadDepartamentos(){
     this.departamentos = await this.propiedadService.getDepartamentos();
+  }
+
+  isArrendadorCorrecto(propiedad: PropiedadDTO): boolean {
+    return propiedad.arrendador.idCuenta === this.authService.getCurrentUser()?.idCuenta;
   }
 
   async onDepartamentoChange(departamento: String) {
     if (departamento) {
       console.log('Departamento seleccionado:', this.departamentoSeleccionado);
       this.municipios = await this.propiedadService.getMunicipios(departamento);
-      this.propiedadForm.get('municipio')!.reset(); 
+      if (this.propiedadInicializada || !this.editMode) {
+        this.propiedadForm.get('municipio')!.reset(); 
+      }
     }
   }
 

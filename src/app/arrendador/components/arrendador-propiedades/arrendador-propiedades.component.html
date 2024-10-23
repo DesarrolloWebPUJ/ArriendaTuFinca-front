@@ -1,0 +1,22 @@
+<app-arrendador-navbar></app-arrendador-navbar>
+
+<div class="container">
+<section class="first-section">
+    <h2>Mis propiedades</h2>
+    <a  [routerLink]="['/arrendador/propiedades/crear-propiedad']" class="btn-crear">Crear propiedad</a>
+</section>
+
+<section class="propiedades-section">
+    <div *ngIf="propiedades && propiedades.length > 0; else noPropiedades">
+        <app-propiedad-card
+            [propiedades]="this.propiedades"
+            [isArrendador]="this.isArrendador">
+        </app-propiedad-card>
+    </div>
+    <ng-template #noPropiedades>
+        <div class="no-items-card">
+            <p>No tienes propiedades registradas.</p>
+        </div>
+    </ng-template>
+</section>
+</div>

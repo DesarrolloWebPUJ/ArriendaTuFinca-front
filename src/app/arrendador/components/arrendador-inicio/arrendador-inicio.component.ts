@@ -8,11 +8,12 @@ import { SolicitudService } from '../../../common/services/solicitud.service';
 import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { FechaYHoraPipe } from "../../../common/pipes/fecha-yhora.pipe";
 import { AuthService } from '../../../common/services/auth.service';
+import { PropiedadCardComponent } from '../../../common/components/propiedad-card/propiedad-card.component';
 
 @Component({
   selector: 'app-arrendador-inicio',
   standalone: true,
-  imports: [ArrendadorNavbarComponent, CommonModule, RouterModule, FechaYHoraPipe],
+  imports: [ArrendadorNavbarComponent, CommonModule, RouterModule, FechaYHoraPipe, PropiedadCardComponent],
   templateUrl: './arrendador-inicio.component.html',
   styleUrl: './arrendador-inicio.component.css'
 })
@@ -24,6 +25,7 @@ export class ArrendadorInicioComponent {
   defaultPropiedadImagePath = '/assets/sample/propiedad2.jpg';
   solicitudes: SolicitudDTO[] = [];
   solicitudesCargadas = false;
+  isArrendador: boolean = true;
 
   solicitud = {
     propiedad: {
