@@ -12,6 +12,7 @@ export class SolicitudDTO extends BaseSolicitudDTO {
         fechaFin: string,
         fechaCreacion: string,
         cantidadPersonas: number,
+        valor: number,
         arrendadorCalificado: boolean,
         arrendatarioCalificado: boolean,
         propiedadCalificado: boolean,
@@ -19,7 +20,7 @@ export class SolicitudDTO extends BaseSolicitudDTO {
         arrendatario: CuentaDTO,
         propiedad: SimplePropiedadDTO
     ) {
-        super(idSolicitud, new Date(fechaInicio), new Date(fechaFin), new Date(fechaCreacion), cantidadPersonas, arrendadorCalificado, arrendatarioCalificado, propiedadCalificado, estadoSolicitud);
+        super(idSolicitud, new Date(fechaInicio), new Date(fechaFin), new Date(fechaCreacion), cantidadPersonas, valor, arrendadorCalificado, arrendatarioCalificado, propiedadCalificado, estadoSolicitud);
         this.arrendatario = arrendatario;
         this.propiedad = propiedad;
     }

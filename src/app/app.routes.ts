@@ -15,8 +15,8 @@ export const routes: Routes = [
     { path:'arrendador', component: ArrendadorInicioComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/perfil', component: ArrendadorPerfilComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades', component: ArrendadorPropiedadesComponent, canActivate: [simpleAuthGuard]},
-    { path: 'arrendador/propiedades/:id', component: ArrendadorPropiedadDetallesComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades/crear-propiedad', component: PropiedadFormComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador/propiedades/:id', component: ArrendadorPropiedadDetallesComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades/editar/:id', component: PropiedadFormComponent, canActivate: [simpleAuthGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

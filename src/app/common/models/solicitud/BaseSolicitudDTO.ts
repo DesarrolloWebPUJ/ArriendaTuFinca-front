@@ -3,9 +3,10 @@ import { EstadoSolicitudDTO } from "../EstadoSolicitudDTO";
 export class BaseSolicitudDTO {
     idSolicitud: number;
     fechaInicio: Date;
-    fechaFin: Date;
+    fechaFinal: Date;
     fechaCreacion: Date;
     cantidadPersonas: number;
+    valor: number;
     arrendadorCalificado: boolean;
     arrendatarioCalificado: boolean;
     propiedadCalificado: boolean;
@@ -14,9 +15,10 @@ export class BaseSolicitudDTO {
     constructor(
         idSolicitud: number,
         fechaInicio: Date,
-        fechaFin: Date,
+        fechaFinal: Date,
         fechaCreacion: Date,
         cantidadPersonas: number,
+        valor: number,
         arrendadorCalificado: boolean,
         arrendatarioCalificado: boolean,
         propiedadCalificado: boolean,
@@ -24,9 +26,10 @@ export class BaseSolicitudDTO {
     ) {
         this.idSolicitud = idSolicitud;
         this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaFinal = fechaFinal;
         this.fechaCreacion = fechaCreacion;
         this.cantidadPersonas = cantidadPersonas;
+        this.valor = valor;
         this.arrendadorCalificado = arrendadorCalificado;
         this.arrendatarioCalificado = arrendatarioCalificado;
         this.propiedadCalificado = propiedadCalificado;

@@ -1,0 +1,16 @@
+<div class="usuario-detalles-container">
+    <div class="usuario-header">
+      <img [src]="usuarioDefaultImagePath" alt="{{ usuario.nombreCuenta }}" class="usuario-imagen">
+      <div class="usuario-info">
+        <h2>{{ usuario.nombreCuenta }} {{ usuario.apellidoCuenta }}</h2>
+        <p>{{ usuario.email }}</p>
+        <p>{{ usuario.telefono }}</p>
+      </div>
+    </div>
+    <div class="usuario-detalles">
+      <p><strong>Nombre:</strong> {{ usuario.nombreCuenta }}</p>
+      <p><strong>Apellido:</strong> {{ usuario.apellidoCuenta }}</p>
+      <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+      <p><strong>Email:</strong> {{ usuario.email }}</p>
+    </div>
+  </div>

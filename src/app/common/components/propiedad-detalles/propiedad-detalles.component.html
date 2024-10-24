@@ -15,7 +15,7 @@
       <p><strong>Permite mascotas:</strong> {{ propiedad.permiteMascotas ? 'Sí' : 'No' }}</p>
       <p><strong>Tiene piscina:</strong> {{ propiedad.tienePiscina ? 'Sí' : 'No' }}</p>
       <p><strong>Tiene asador:</strong> {{ propiedad.tieneAsador ? 'Sí' : 'No' }}</p>
-      <p><strong>Valor por noche:</strong> ${{ propiedad.valorNoche }}</p>
+      <p><strong>Valor por noche:</strong> {{ propiedad.valorNoche | costoDinero}}</p>
     </div>
     <!-- <div class="detalle-botones">
       <button class="btn-reservar">Reservar</button>

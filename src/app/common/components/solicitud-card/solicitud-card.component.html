@@ -1,0 +1,10 @@
+<div *ngFor="let solicitud of solicitudes" class="solicitud-card">
+    <h4>Solicitud para la propiedad: {{ solicitud?.propiedad?.nombrePropiedad }}</h4>
+    <p>Solicitante: {{ solicitud?.arrendatario?.nombreCuenta }}</p>
+    <p>Fecha de solicitud: {{ solicitud.fechaCreacion | fechaYHora }}</p>
+    <p>Fecha ingreso: {{ solicitud.fechaInicio | fechaYHora }}, Fecha salida: {{ solicitud.fechaFinal | fechaYHora }}</p>
+    <p>Valor: {{solicitud.valor | costoDinero}}</p>
+    <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
+    <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+</div>
+

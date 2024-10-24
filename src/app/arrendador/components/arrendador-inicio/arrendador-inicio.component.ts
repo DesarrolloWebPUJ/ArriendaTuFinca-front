@@ -9,21 +9,25 @@ import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { FechaYHoraPipe } from "../../../common/pipes/fecha-yhora.pipe";
 import { AuthService } from '../../../common/services/auth.service';
 import { PropiedadCardComponent } from '../../../common/components/propiedad-card/propiedad-card.component';
+import { BasePropiedadDTO } from '../../../common/models/Propiedad/BasePropiedadDTO';
+import { SolicitudCardComponent } from "../../../common/components/solicitud-card/solicitud-card.component";
 
 @Component({
   selector: 'app-arrendador-inicio',
   standalone: true,
-  imports: [ArrendadorNavbarComponent, CommonModule, RouterModule, FechaYHoraPipe, PropiedadCardComponent],
+  imports: [ArrendadorNavbarComponent, CommonModule, RouterModule, FechaYHoraPipe, PropiedadCardComponent, SolicitudCardComponent],
   templateUrl: './arrendador-inicio.component.html',
   styleUrl: './arrendador-inicio.component.css'
 })
 export class ArrendadorInicioComponent {
 
   private readonly maxSolicitudes : number = 5;
+  private readonly maxPropiedades : number = 3;
 
   arrendador: ArrendadorDTO = new ArrendadorDTO();
   defaultPropiedadImagePath = '/assets/sample/propiedad2.jpg';
   solicitudes: SolicitudDTO[] = [];
+  propiedades: BasePropiedadDTO[] = [];
   solicitudesCargadas = false;
   isArrendador: boolean = true;
 
@@ -51,8 +55,26 @@ export class ArrendadorInicioComponent {
   private async loadArrendadorData(idArrendador: number): Promise<void> {
     try {
       this.arrendador = await this.arrendadorService.getArrendador(idArrendador);
+      this.loadRandomPropiedades();
     } catch (error) {
       console.error('Error fetching arrendador data:', error);
+    }
+  }
+
+  private loadRandomPropiedades(){
+    let tmpPropiedades = this.arrendador.propiedades;
+
+    if(tmpPropiedades.length > this.maxPropiedades){
+      let randomPropiedades = [];
+      let randomIndex = 0;
+      for(let i = 0; i < this.maxPropiedades; i++){
+        randomIndex = Math.floor(Math.random() * tmpPropiedades.length);
+        randomPropiedades.push(tmpPropiedades[randomIndex]);
+        tmpPropiedades.splice(randomIndex, 1);
+      }
+      this.propiedades = randomPropiedades;
+    } else {
+      this.propiedades = tmpPropiedades;
     }
   }
 

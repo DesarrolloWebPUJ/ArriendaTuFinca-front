@@ -10,9 +10,9 @@
     <section class="propiedades-section">
         <h3>Mis Propiedades</h3>
 
-        <div *ngIf="arrendador.propiedades && arrendador.propiedades.length > 0; else noPropiedades">
+        <div *ngIf="this.propiedades && this.propiedades.length > 0; else noPropiedades">
             <app-propiedad-card
-                [propiedades]="arrendador.propiedades"
+                [propiedades]="this.propiedades"
                 [isArrendador]="this.isArrendador">
             </app-propiedad-card>
         </div>
@@ -29,13 +29,9 @@
         <h3>Solicitudes Recibidas</h3>
 
         <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
-            <div *ngFor="let solicitud of solicitudes" class="solicitud-card">
-                <h4>Solicitud para la propiedad: {{ solicitud?.propiedad?.nombrePropiedad }}</h4>
-                <p>Arrendatario: {{ solicitud?.arrendatario?.nombreCuenta }}</p>
-                <p>Fecha de solicitud: {{ solicitud.fechaCreacion | fechaYHora }}</p>
-                <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
-                <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
-            </div>
+            <app-solicitud-card
+                [solicitudes]="this.solicitudes">
+            </app-solicitud-card>
         </div>
         <ng-template #noSolicitudes>
             <div class="no-items-card">

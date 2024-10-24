@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .usuario-detalles-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+  }
+  
+  .usuario-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .usuario-imagen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .usuario-info {
+    flex: 1;
+  }
+  
+  .usuario-info h2 {
+    font-size: 24px;
+    color: #2E7D32;
+    margin-bottom: 10px;
+  }
+  
+  .usuario-info p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .usuario-detalles p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .usuario-detalles p strong {
+    color: #000;
+  }

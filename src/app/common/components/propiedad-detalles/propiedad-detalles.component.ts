@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { BasePropiedadDTO } from '../../models/Propiedad/BasePropiedadDTO';
+import { CostoDineroPipe } from "../../pipes/costo-dinero.pipe";
 
 @Component({
   selector: 'app-propiedad-detalles',
   standalone: true,
-  imports: [],
+  imports: [CostoDineroPipe],
   templateUrl: './propiedad-detalles.component.html',
   styleUrl: './propiedad-detalles.component.css'
 })
