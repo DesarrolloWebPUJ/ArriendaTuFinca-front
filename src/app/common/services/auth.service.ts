@@ -27,14 +27,18 @@ export class AuthService {
   }
 
   private async findLoginUserRole(user: CuentaDTO){
+    let arrendador = null;
     if (user.idCuenta !== undefined && user.idCuenta !== null) {
-      await this.arrendadorService.getArrendador(user.idCuenta).then(arrendador => {
-        const role = arrendador ? UserRole.Arrendador : UserRole.Arrendatario;
-        this.setCurrentUser(user, role);
-      });
+      try{
+        await this.arrendadorService.getArrendador(user.idCuenta).then(data => {
+          arrendador = data;
+        });
+      } catch (error) {}
     } else {
       console.error('Invalid user idCuenta');
     }
+    const role = arrendador ? UserRole.Arrendador : UserRole.Arrendatario;
+    this.setCurrentUser(user, role);
   }
 
   logout() {

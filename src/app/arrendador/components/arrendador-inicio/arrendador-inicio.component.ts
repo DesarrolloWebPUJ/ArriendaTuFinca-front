@@ -87,17 +87,4 @@ export class ArrendadorInicioComponent {
     }
   }
 
-  getEstadoSolicitudClase(solicitud: SolicitudDTO): string {
-    const estado = solicitud.estadoSolicitud.nombreEstadoSolicitud;
-
-    switch (estado) {
-        case 'Pendiente':
-            return 'estado-pendiente';
-        case 'aceptada':
-            return 'estado-aceptada';
-        default:
-            return '';
-    }
-  }
-
 }

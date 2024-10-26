@@ -1,0 +1,25 @@
+<app-arrendatario-navbar></app-arrendatario-navbar>
+
+<div class="container">
+    <main class="main-container">
+        <section class="welcome-section">
+            <h2>Bienvenido, {{ arrendatario?.nombreCuenta }}</h2>
+            <p>Aquí puedes ver tus solicitudes más recientes.</p>
+        </section>
+    
+        <section class="solicitudes-section" *ngIf="solicitudesCargadas">
+            <h3>Solicitudes hechas</h3>
+    
+            <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
+                <app-solicitud-card
+                    [solicitudes]="this.solicitudes">
+                </app-solicitud-card>
+            </div>
+            <ng-template #noSolicitudes>
+                <div class="no-items-card">
+                    <p>No han llegado solicitudes.</p>
+                </div>
+            </ng-template>
+        </section>
+    </main>
+    </div>
