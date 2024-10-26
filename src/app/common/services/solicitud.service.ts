@@ -15,4 +15,8 @@ export class SolicitudService {
   getTopRecentSolicitudesByArrendador(arrendadorId: number, maxSolicitudes: number): Promise<SolicitudDTO[]> {
     return axios.get<SolicitudDTO[]>(`${this.apiUrl}/arrendador/${arrendadorId}?limit=${maxSolicitudes}`).then(response => response.data);
   }
+
+  getSolicitudesByArrendatario(arrendatarioId: number): Promise<SolicitudDTO[]> {
+    return axios.get<SolicitudDTO[]>(`${this.apiUrl}/arrendatario/${arrendatarioId}`).then(response => response.data);
+  }
 }

@@ -8,6 +8,9 @@ import { simpleAuthGuard } from './common/guards/simple-auth.guard';
 import { PropiedadFormComponent } from './arrendador/components/propiedad-form/propiedad-form.component';
 import { ArrendadorPropiedadesComponent } from './arrendador/components/arrendador-propiedades/arrendador-propiedades.component';
 import { ArrendadorPropiedadDetallesComponent } from './arrendador/components/arrendador-propiedad-detalles/arrendador-propiedad-detalles.component';
+import { ArrendatarioInicioComponent } from './arrendatario/components/arrendatario-inicio/arrendatario-inicio.component';
+import { ArrendatarioPerfilComponent } from './arrendatario/components/arrendatario-perfil/arrendatario-perfil.component';
+import { ArrendatarioBuscarPropiedadesComponent } from './arrendatario/components/arrendatario-buscar-propiedades/arrendatario-buscar-propiedades.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -18,5 +21,8 @@ export const routes: Routes = [
     { path: 'arrendador/propiedades/crear-propiedad', component: PropiedadFormComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades/:id', component: ArrendadorPropiedadDetallesComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades/editar/:id', component: PropiedadFormComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario', component: ArrendatarioInicioComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario/perfil', component: ArrendatarioPerfilComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario/propiedades', component: ArrendatarioBuscarPropiedadesComponent, canActivate: [simpleAuthGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

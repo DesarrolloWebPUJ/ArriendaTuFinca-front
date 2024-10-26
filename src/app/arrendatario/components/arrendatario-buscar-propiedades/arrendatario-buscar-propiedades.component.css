@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:host {
+    background-color: #F5F5F5;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+}
+  
+  .search-container {
+    max-width: 1200px;
+    padding: 20px;
+    margin: 20px 10%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px; /* Espacio entre los elementos de la fila */
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    flex: 1; /* Hace que los elementos de la fila ocupen el mismo espacio */
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn-buscar {
+    display: inline-block;
+    background-color: #1976D2;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-buscar:hover {
+    background-color: #1565C0;
+  }
+  
+  .propiedades-container {
+    max-width: 1000px;
+    flex: 1; /* Hace que el contenedor de propiedades ocupe todo el espacio disponible */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    padding-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+  }

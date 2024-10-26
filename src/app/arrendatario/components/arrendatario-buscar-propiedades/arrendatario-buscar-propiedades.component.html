@@ -1,0 +1,47 @@
+<app-arrendatario-navbar></app-arrendatario-navbar>
+
+<div class="container">
+<div class="search-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" formControlName="nombre" type="text" placeholder="Buscar por nombre">
+      </div>
+      <div class="form-group">
+        <label for="cantidadPersonas">Cantidad de Personas</label>
+        <input id="cantidadPersonas" formControlName="cantidadPersonas" type="number" placeholder="Buscar por cantidad de personas">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="departamento">Departamento</label>
+        <ng-select
+          [items]="departamentos"
+          placeholder="Selecciona un departamento"
+          formControlName="departamento"
+          (ngModelChange)="onDepartamentoChange($event)"
+          [searchable]="true">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label for="municipio">Municipio</label>
+        <ng-select
+          [items]="municipios"
+          placeholder="Selecciona un municipio"
+          formControlName="municipio"
+          [disabled]="!municipios.length"
+          [searchable]="true">
+        </ng-select>
+      </div>
+    </div>
+    <button type="submit" class="btn-buscar">Buscar</button>
+  </form>
+</div>
+
+<div class="propiedades-container">
+  <app-propiedad-card
+    [propiedades]="this.filteredPropiedades">
+  </app-propiedad-card>
+</div>
+</div>
