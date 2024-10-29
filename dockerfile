@@ -20,13 +20,13 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Elimina el archivo de configuración por defecto de Nginx
-RUN rm -rf /etc/nginx/conf.d/default.conf
+#RUN rm -rf /etc/nginx/conf.d/default.conf
 
 # Copiar archivos de la etapa de construcción
 COPY --from=build /app/dist/arriendatufinca-front /usr/share/nginx/html
 
 # Copiar archivo de configuración personalizado de Nginx
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+#COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto en el que Nginx está escuchando
 EXPOSE 80
