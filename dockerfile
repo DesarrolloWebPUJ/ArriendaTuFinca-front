@@ -26,7 +26,7 @@ RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/arriendatufinca-front /usr/share/nginx/html
 
 # Copiar archivo de configuración personalizado de Nginx
-COPY nginx.conf /etc/nginx/conf.d
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto en el que Nginx está escuchando
 EXPOSE 80
