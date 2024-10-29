@@ -12,8 +12,9 @@ import { ArrendatarioInicioComponent } from './arrendatario/components/arrendata
 import { ArrendatarioPerfilComponent } from './arrendatario/components/arrendatario-perfil/arrendatario-perfil.component';
 import { ArrendatarioBuscarPropiedadesComponent } from './arrendatario/components/arrendatario-buscar-propiedades/arrendatario-buscar-propiedades.component';
 import { SolicitudDetailsComponent } from './arrendador/components/solicitud-details/solicitud-details.component';
-import { SolicitudCreateComponent } from './arrendatario/components/solicitud-create/solicitud-create.component';
 import { SolicitudesListComponent } from './arrendador/components/solicitudes-list/solicitudes-list.component';
+import { SolicitudFormComponent } from './arrendatario/components/solicitud-form/solicitud-form.component';
+import { ArrendatarioSolicitudDetailsComponent } from './arrendatario/components/arrendatario-solicitud-details/arrendatario-solicitud-details.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -28,7 +29,8 @@ export const routes: Routes = [
     { path: 'arrendatario/perfil', component: ArrendatarioPerfilComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendatario/propiedades', component: ArrendatarioBuscarPropiedadesComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/solicitudes', component: SolicitudesListComponent, canActivate: [simpleAuthGuard]},
-    { path: 'arrendador/solicitud/:id', component: SolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
-    { path: 'arrendatario/solicitud', component: SolicitudCreateComponent, canActivate: [simpleAuthGuard]},
+    { path: 'solicitud/:id', component: SolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario/solicitud/:id', component: ArrendatarioSolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario/solicitar/propiedad/:id', component: SolicitudFormComponent, canActivate: [simpleAuthGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

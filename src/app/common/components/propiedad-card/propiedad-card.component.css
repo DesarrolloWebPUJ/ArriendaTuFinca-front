@@ -51,7 +51,7 @@
     gap: 10px; /* Aumenta el espacio entre los botones */
 }
 
-.btn-detalles, .btn-editar {
+.btn-detalles, .btn-editar, .btn-crear {
     display: inline-block;
     color: white;
     padding: 10px 12px;
@@ -65,7 +65,7 @@
     background-color: #388E3C; /* Verde oscuro */
 }
 
-.btn-editar {
+.btn-editar, .btn-crear {
     background-color: #1976D2; /* Azul */
 }
 
