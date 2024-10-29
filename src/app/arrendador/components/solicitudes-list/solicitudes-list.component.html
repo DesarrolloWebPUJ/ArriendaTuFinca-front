@@ -1,0 +1,6 @@
+<div *ngFor="let solicitud of solicitudes" class="solicitud-card">
+    <p><strong>Solicitante:</strong> {{ solicitud.arrendatario?.nombreCuenta }}</p>
+    <p><strong>Número de Personas:</strong> {{ solicitud.cantidadPersonas }}</p>
+    <p><strong>Estado:</strong> <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud.estadoSolicitud.nombreEstadoSolicitud }}</span></p>
+    <a [routerLink]="['/solicitud-detalle', solicitud.idSolicitud]" class="btn-detalles">Ver detalles</a>
+</div>

@@ -1,0 +1,21 @@
+<div class="solicitud-details-card">
+    <h2>Detalles de la Solicitud</h2>
+    <p><strong>Propiedad:</strong> {{ solicitud.propiedad?.nombrePropiedad || 'No especificado' }}</p>
+    <p><strong>Solicitante:</strong> {{ solicitud.arrendatario?.nombreCuenta || 'No especificado' }}</p>
+    <p><strong>Fecha de Creación:</strong> {{ solicitud.fechaCreacion ? (solicitud.fechaCreacion | fechaYHora: 'dd/MM/yyyy') : 'Fecha no disponible' }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ solicitud.fechaInicio ? (solicitud.fechaInicio | fechaYHora: 'dd/MM/yyyy') : 'Fecha no disponible' }}</p>
+    <p><strong>Fecha Final:</strong> {{ solicitud.fechaFinal ? (solicitud.fechaFinal | fechaYHora: 'dd/MM/yyyy') : 'Fecha no disponible' }}</p>
+    <p><strong>Número de Personas:</strong> {{ solicitud.cantidadPersonas || 'No especificado' }}</p>
+    <p><strong>Valor:</strong> {{ solicitud.valor ? (solicitud.valor | costoDinero) : 0 }}</p>
+    <p><strong>Estado:</strong> 
+        <span> 
+            [ngClass]="solicitud?.estadoSolicitud ? getEstadoSolicitudClase(solicitud) : ''" 
+            {{ solicitud.estadoSolicitud?.nombreEstadoSolicitud || 'No especificado' }}
+        </span>
+    </p>
+
+    <div class="botones-accion">
+        <button class="btn-aceptar" (click)="aceptarSolicitud()">Aceptar</button>
+        <button class="btn-rechazar" (click)="rechazarSolicitud()">Rechazar</button>
+    </div>
+</div>

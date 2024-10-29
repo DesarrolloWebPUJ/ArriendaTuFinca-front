@@ -11,11 +11,14 @@ import { ArrendadorPropiedadDetallesComponent } from './arrendador/components/ar
 import { ArrendatarioInicioComponent } from './arrendatario/components/arrendatario-inicio/arrendatario-inicio.component';
 import { ArrendatarioPerfilComponent } from './arrendatario/components/arrendatario-perfil/arrendatario-perfil.component';
 import { ArrendatarioBuscarPropiedadesComponent } from './arrendatario/components/arrendatario-buscar-propiedades/arrendatario-buscar-propiedades.component';
+import { SolicitudDetailsComponent } from './arrendador/components/solicitud-details/solicitud-details.component';
+import { SolicitudCreateComponent } from './arrendatario/components/solicitud-create/solicitud-create.component';
+import { SolicitudesListComponent } from './arrendador/components/solicitudes-list/solicitudes-list.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
-    { path:'arrendador', component: ArrendadorInicioComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador', component: ArrendadorInicioComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/perfil', component: ArrendadorPerfilComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades', component: ArrendadorPropiedadesComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/propiedades/crear-propiedad', component: PropiedadFormComponent, canActivate: [simpleAuthGuard]},
@@ -24,5 +27,8 @@ export const routes: Routes = [
     { path: 'arrendatario', component: ArrendatarioInicioComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendatario/perfil', component: ArrendatarioPerfilComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendatario/propiedades', component: ArrendatarioBuscarPropiedadesComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador/solicitudes', component: SolicitudesListComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador/solicitud/:id', component: SolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendatario/solicitud', component: SolicitudCreateComponent, canActivate: [simpleAuthGuard]},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
