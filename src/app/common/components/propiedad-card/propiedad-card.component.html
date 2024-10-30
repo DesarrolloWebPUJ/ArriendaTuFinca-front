@@ -12,6 +12,7 @@
             </div>
             <ng-template #botonesArrendatario>
                 <a [routerLink]="['/arrendatario/propiedades/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
+                <a [routerLink]="['/arrendatario/propiedades/crear-solicitud', propiedad.idPropiedad]" class="btn-editar">Solicitar arriendo</a>
             </ng-template>
         </div>
     </div>

@@ -38,4 +38,9 @@ export class ArrendadorNavbarComponent {
     this.router.navigate(['arrendador/propiedades']);
   }
 
+  navigateToSolicitudes(event: Event){
+    event.preventDefault();
+    this.router.navigate(['arrendador/solicitudes']);
+  }
+
 }

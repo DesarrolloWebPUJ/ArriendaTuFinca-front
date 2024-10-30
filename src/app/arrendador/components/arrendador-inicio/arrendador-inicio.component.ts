@@ -87,4 +87,10 @@ export class ArrendadorInicioComponent {
     }
   }
 
+  actualizarSolicitudes() {
+    if (this.authService.isArrendador() && this.arrendador.idCuenta) {
+      this.loadSolicitudesData(this.arrendador.idCuenta);
+    }
+  }
+
 }

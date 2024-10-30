@@ -10,7 +10,6 @@
 .solicitud-card h4 {
     font-size: 18px;
     color: #2E7D32;
-    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -20,35 +19,91 @@
     margin-bottom: 5px;
 }
 
-.solicitud-card .btn-detalles {
-    position: absolute; 
-    bottom: 20px; 
-    right: 20px; 
+.solicitud-card .botones {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-decoration: none;
 }
 
-.estado {
-    font-weight: bold;
-}
-
-.estado-pendiente {
-    color: #FFA000;
-}
-
-.estado-aceptada {
-    color: #2E7D32;
+.btn-detalles, .btn-aceptar, .btn-rechazar, .btn-pagar, .btn-calificar {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn-detalles {
-    display: inline-block;
+    background-color: #1976D2;
     color: white;
-    padding: 10px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 1;
-    background-color: #388E3C; /* Verde oscuro */
 }
 
 .btn-detalles:hover {
-    background-color: #2E7D32; /* Verde más oscuro */
+    background-color: #1565C0;
+}
+
+.btn-aceptar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #388E3C;
+}
+
+.btn-rechazar {
+    background-color: #F44336;
+    color: white;
+}
+
+.btn-rechazar:hover {
+    background-color: #D32F2F;
+}
+
+.btn-pagar {
+    background-color: #FFC107;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background-color: #FFA000;
+}
+
+.btn-calificar {
+    background-color: #FF5722;
+    color: white;
+}
+
+.btn-calificar:hover {
+    background-color: #E64A19;
+}
+
+/* Estilos para los estados */
+.estado-pendiente {
+    color: #FFA000;
+    font-weight: bold;
+}
+
+.estado-aceptada {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.estado-rechazada {
+    color: #F44336;
+    font-weight: bold;
+}
+
+.estado-calificacion {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.estado-finalizada {
+    color: #2E7D32;
+    font-weight: bold;
 }

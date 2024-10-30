@@ -1,6 +1,17 @@
-<div *ngFor="let solicitud of solicitudes" class="solicitud-card">
-    <p><strong>Solicitante:</strong> {{ solicitud.arrendatario?.nombreCuenta }}</p>
-    <p><strong>Número de Personas:</strong> {{ solicitud.cantidadPersonas }}</p>
-    <p><strong>Estado:</strong> <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud.estadoSolicitud.nombreEstadoSolicitud }}</span></p>
-    <a [routerLink]="['/solicitud-detalle', solicitud.idSolicitud]" class="btn-detalles">Ver detalles</a>
-</div>
+<app-arrendador-navbar></app-arrendador-navbar>
+
+<section class="solicitudes-section" *ngIf="solicitudesCargadas">
+    <h3>Solicitudes Recibidas</h3>
+
+    <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
+        <app-solicitud-card
+            [solicitudes]="this.solicitudes"
+            (solicitudActualizada)="actualizarSolicitudes()">
+        </app-solicitud-card>
+    </div>
+    <ng-template #noSolicitudes>
+        <div class="no-items-card">
+            <p>No han llegado solicitudes.</p>
+        </div>
+    </ng-template>
+</section>

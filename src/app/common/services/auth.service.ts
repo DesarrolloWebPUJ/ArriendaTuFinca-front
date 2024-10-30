@@ -80,5 +80,8 @@ export class AuthService {
     return this.getCurrentUser() !== null;
   }
 
+  isArrendador(): boolean {
+    return this.getUserRole() === UserRole.Arrendador;
+  }
 
 }

@@ -5,6 +5,13 @@
     <p>Fecha ingreso: {{ solicitud.fechaInicio | fechaYHora }}, Fecha salida: {{ solicitud.fechaFinal | fechaYHora }}</p>
     <p>Valor: {{solicitud.valor | costoDinero}}</p>
     <p>Estado: <span [ngClass]="getEstadoSolicitudClase(solicitud)">{{ solicitud?.estadoSolicitud?.nombreEstadoSolicitud }}</span></p>
-    <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+
+    <div class="botones">
+        <a [routerLink]="['/solicitud', solicitud?.idSolicitud]" class="btn-detalles">Ver detalles</a>
+        <button *ngIf="mostrarBotonAceptar(solicitud)" (click)="aceptarSolicitud(solicitud)" class="btn-aceptar">Aceptar</button>
+        <button *ngIf="mostrarBotonRechazar(solicitud)" (click)="rechazarSolicitud(solicitud)" class="btn-rechazar">Rechazar</button>
+        <button *ngIf="mostrarBotonPagar(solicitud)" (click)="pagarSolicitud(solicitud)" class="btn-pagar">Pagar</button>
+        <button *ngIf="mostrarBotonCalificar(solicitud)" (click)="calificarSolicitud(solicitud)" class="btn-calificar">Calificar</button>
+    </div>
 </div>
 

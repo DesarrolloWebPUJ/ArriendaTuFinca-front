@@ -76,7 +76,6 @@ export class PropiedadFormComponent implements OnInit{
           nombre: propiedad.nombrePropiedad,
           descripcion: propiedad.descripcionPropiedad,
           municipio: propiedad.municipio,
-          departamento: propiedad.departamento,
           tipoIngreso: propiedad.tipoIngreso,
           habitaciones: propiedad.cantidadHabitaciones,
           baños: propiedad.cantidadBanos,
@@ -85,6 +84,7 @@ export class PropiedadFormComponent implements OnInit{
           asador: propiedad.tieneAsador,
           valorNoche: propiedad.valorNoche
         });
+        this.propiedadForm.get('departamento')?.setValue(propiedad.departamento);
         this.propiedadForm.get('municipio')?.setValue(propiedad.municipio);
         this.propiedadInicializada = true;
       }
@@ -108,10 +108,10 @@ export class PropiedadFormComponent implements OnInit{
   async onDepartamentoChange(departamento: String) {
     if (departamento) {
       console.log('Departamento seleccionado:', this.departamentoSeleccionado);
-      this.municipios = await this.propiedadService.getMunicipios(departamento);
-      if (!this.propiedadInicializada || !this.editMode) {
+      if (this.propiedadInicializada || !this.editMode) {
         this.propiedadForm.get('municipio')!.reset(); 
       }
+      this.municipios = await this.propiedadService.getMunicipios(departamento);
     }
   }
 
