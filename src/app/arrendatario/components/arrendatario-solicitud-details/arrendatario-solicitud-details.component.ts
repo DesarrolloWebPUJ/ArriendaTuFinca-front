@@ -5,16 +5,17 @@ import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { FechaYHoraPipe } from '../../../common/pipes/fecha-yhora.pipe';
 import { CostoDineroPipe } from '../../../common/pipes/costo-dinero.pipe';
 import { CommonModule } from '@angular/common';
+import { ArrendatarioNavbarComponent } from '../arrendatario-navbar/arrendatario-navbar.component';
 
 @Component({
-  selector: 'app-solicitud-details',
-  templateUrl: './solicitud-details.component.html',
-  styleUrls: ['./solicitud-details.component.css'],
+  selector: 'app-arrendatario-solicitud-details',
+  templateUrl: './arrendatario-solicitud-details.component.html',
+  styleUrls: ['./arrendatario-solicitud-details.component.css'],
   standalone: true,
-  imports: [FechaYHoraPipe, CostoDineroPipe, CommonModule]
+  imports: [FechaYHoraPipe, CostoDineroPipe, CommonModule, ArrendatarioNavbarComponent]
 })
 
-export class SolicitudDetailsComponent implements OnInit {
+export class ArrendatarioSolicitudDetailsComponent implements OnInit {
   solicitud: Partial<SolicitudDTO> = {};
 
   constructor(

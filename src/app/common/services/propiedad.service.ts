@@ -29,6 +29,10 @@ export class PropiedadService {
     return axios.get<PropiedadDTO>(`${this.apiUrl}/${id}`).then(response => response.data);
   }
 
+  getPropiedadesByArrendador(arrendadorId: number): Promise<PropiedadDTO[]> {
+    return axios.get<PropiedadDTO[]>(`${this.apiUrl}/arrendador/${arrendadorId}`).then(response => response.data);
+  }
+
   saveNewPropiedad(propiedad: SimplePropiedadDTO) : Promise<SimplePropiedadDTO> {
     return axios.post<SimplePropiedadDTO>(`${this.apiUrl}`, propiedad).then(response => response.data);
   }

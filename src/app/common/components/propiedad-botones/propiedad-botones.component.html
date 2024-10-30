@@ -1,0 +1,19 @@
+<div class="botones-container">
+
+    <a *ngIf="mostrarBotonEditar()"
+    [routerLink]="['/arrendador/propiedades/editar', propiedad.idPropiedad]" class="btn-editar"
+    >Editar</a>
+    
+    <a *ngIf="mostrarArrendadorVerDetalles()"
+    [routerLink]="['/arrendador/propiedades', propiedad.idPropiedad]" class="btn-detalles"
+    >Ver detalles</a>
+
+    <a *ngIf="mostrarArrendatarioVerDetalles()"
+    [routerLink]="['/arrendatario/propiedades/propiedad', propiedad.idPropiedad]" class="btn-detalles"
+    >Ver detalles</a>
+
+    <a *ngIf="mostrarCrearSolicitud()"
+    [routerLink]="['/arrendatario/propiedades/crear-solicitud', propiedad.idPropiedad]" class="btn-solicitar"
+    >Solicitar arriendo</a>
+
+</div>

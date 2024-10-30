@@ -1,38 +1,18 @@
 import { EstadoSolicitudDTO } from "../EstadoSolicitudDTO";
 
 export class BaseSolicitudDTO {
-    idSolicitud: number;
-    fechaInicio: Date;
-    fechaFinal: Date;
-    fechaCreacion: Date;
-    cantidadPersonas: number;
-    valor: number;
-    arrendadorCalificado: boolean;
-    arrendatarioCalificado: boolean;
-    propiedadCalificado: boolean;
-    estadoSolicitud: EstadoSolicitudDTO;
+    idSolicitud: number = 0;
+    fechaInicio: Date = new Date();
+    fechaFinal: Date = new Date();
+    fechaCreacion: Date = new Date();
+    cantidadPersonas: number = 1;
+    valor: number = 0;
+    arrendadorCalificado: boolean = false;
+    arrendatarioCalificado: boolean = false;
+    propiedadCalificado: boolean = false;
+    estadoSolicitud: EstadoSolicitudDTO = { idEstadoSolicitud: 0, nombreEstadoSolicitud: 'Pendiente' };
 
-    constructor(
-        idSolicitud: number,
-        fechaInicio: Date,
-        fechaFinal: Date,
-        fechaCreacion: Date,
-        cantidadPersonas: number,
-        valor: number,
-        arrendadorCalificado: boolean,
-        arrendatarioCalificado: boolean,
-        propiedadCalificado: boolean,
-        estadoSolicitud: EstadoSolicitudDTO
-    ) {
-        this.idSolicitud = idSolicitud;
-        this.fechaInicio = fechaInicio;
-        this.fechaFinal = fechaFinal;
-        this.fechaCreacion = fechaCreacion;
-        this.cantidadPersonas = cantidadPersonas;
-        this.valor = valor;
-        this.arrendadorCalificado = arrendadorCalificado;
-        this.arrendatarioCalificado = arrendatarioCalificado;
-        this.propiedadCalificado = propiedadCalificado;
-        this.estadoSolicitud = estadoSolicitud;
+    constructor(init?: Partial<BaseSolicitudDTO>) {
+        Object.assign(this, init);
     }
 }

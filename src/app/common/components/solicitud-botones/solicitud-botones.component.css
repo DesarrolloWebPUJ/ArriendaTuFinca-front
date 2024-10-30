@@ -1,0 +1,63 @@
+.botones-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+button, a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detalles {
+    background-color: #1976D2;
+    color: white;
+}
+
+.btn-detalles:hover {
+    background-color: #1565C0;
+}
+
+.btn-aceptar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #388E3C;
+}
+
+.btn-rechazar {
+    background-color: #F44336;
+    color: white;
+}
+
+.btn-rechazar:hover {
+    background-color: #D32F2F;
+}
+
+.btn-pagar {
+    background-color: #FFC107;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background-color: #FFA000;
+}
+
+.btn-calificar {
+    background-color: #FF5722;
+    color: white;
+}
+
+.btn-calificar:hover {
+    background-color: #E64A19;
+}

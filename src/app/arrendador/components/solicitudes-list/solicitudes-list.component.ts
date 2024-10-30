@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SolicitudService } from '../../../common/services/solicitud.service';
+import { PropiedadService } from '../../../common/services/propiedad.service';
 import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ import { SolicitudCardComponent } from "../../../common/components/solicitud-car
 import { ArrendadorService } from '../../../common/services/arrendador.service';
 import { AuthService } from '../../../common/services/auth.service';
 import { ArrendadorDTO } from '../../../common/models/ArrendadorDTO';
+import { SolicitudStatus } from '../../../common/models/enums/SolicitudStatus';
 
 @Component({
   selector: 'app-solicitudes-list',
@@ -55,11 +57,18 @@ export class SolicitudesListComponent implements OnInit {
 
   private async loadSolicitudesData(idArrendador: number): Promise<void> {
     try {
-      this.solicitudes = await this.solicitudService.getTopRecentSolicitudesByArrendador(idArrendador, -1);
+      let solicitudes = await this.solicitudService.getTopRecentSolicitudesByArrendador(idArrendador, -1);
+      this.solicitudes = this.filtrarSolicitudes(solicitudes);
       this.solicitudesCargadas = true;
     } catch (error) {
       console.error('Error fetching solicitudes data:', error);
     }
+  }
+
+  private filtrarSolicitudes(solicitudes: SolicitudDTO[]): SolicitudDTO[] {
+    return solicitudes.filter(solicitud => 
+      solicitud.estadoSolicitud.nombreEstadoSolicitud !== SolicitudStatus.Cerrada &&
+      solicitud.estadoSolicitud.nombreEstadoSolicitud !== SolicitudStatus.Rechazada);
   }
 
   actualizarSolicitudes() {

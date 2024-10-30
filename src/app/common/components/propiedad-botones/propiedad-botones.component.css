@@ -1,0 +1,30 @@
+.botones-container{
+    display: flex;
+    gap: 10px; /* Aumenta el espacio entre los botones */
+}
+
+button, a {
+    display: inline-block;
+    color: white;
+    padding: 10px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.btn-detalles {
+    background-color: #388E3C; /* Verde oscuro */
+}
+
+.btn-editar, .btn-solicitar {
+    background-color: #1976D2; /* Azul */
+}
+
+.btn-detalles:hover {
+    background-color: #2E7D32; /* Verde más oscuro */
+}
+
+.btn-editar:hover, .btn-solicitar:hover {
+    background-color: #1565C0; /* Azul más oscuro */
+}

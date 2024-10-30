@@ -8,14 +8,12 @@
     <p><strong>Número de Personas:</strong> {{ solicitud.cantidadPersonas || 'No especificado' }}</p>
     <p><strong>Valor:</strong> {{ solicitud.valor ? (solicitud.valor | costoDinero) : 0 }}</p>
     <p><strong>Estado:</strong> 
-        <span> 
-            [ngClass]="solicitud?.estadoSolicitud ? getEstadoSolicitudClase(solicitud) : ''" 
-            {{ solicitud.estadoSolicitud?.nombreEstadoSolicitud || 'No especificado' }}
-        </span>
+        <span [ngClass]="solicitud.estadoSolicitud ? getEstadoSolicitudClase(solicitud) : ''">{{ solicitud.estadoSolicitud.nombreEstadoSolicitud || 'No especificado' }}</span>
     </p>
-
-    <div class="botones-accion">
-        <button class="btn-aceptar" (click)="aceptarSolicitud()">Aceptar</button>
-        <button class="btn-rechazar" (click)="rechazarSolicitud()">Rechazar</button>
+    <div class="botones">
+        <app-solicitud-botones
+            [solicitud]="solicitud"
+            (solicitudActualizada)="recargarComponente()"
+        ></app-solicitud-botones>
     </div>
 </div>
