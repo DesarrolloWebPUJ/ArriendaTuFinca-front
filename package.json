@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "build:ssr": "ng build --configuration production && ng run arriendatufinca-front:server:production",
     "serve:ssr:arriendatufinca-front": "node dist/arriendatufinca-front/server/server.mjs"
   },
   "private": true,

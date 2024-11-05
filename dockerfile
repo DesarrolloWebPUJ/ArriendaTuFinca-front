@@ -1,35 +1,14 @@
-# Etapa de construcción
-FROM node:20 AS build
+# Etapa 1: Construcción
+FROM node:18-alpine
 
-# Directorio de trabajo
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copiar package.json y package-lock.json
-COPY package*.json ./
+COPY . /usr/src/app
 
-# Instalar dependencias
+RUN npm install -g @angular/cli
+
 RUN npm install
 
-# Copiar el resto de la aplicación
-COPY . .
-
-# Construir la aplicación para producción
-RUN npm run build --prod
-
-# Etapa de producción
-FROM nginx:alpine
-
-# Elimina el archivo de configuración por defecto de Nginx
-#RUN rm -rf /etc/nginx/conf.d/default.conf
-
-# Copiar archivos de la etapa de construcción
-COPY --from=build /app/dist/arriendatufinca-front /usr/share/nginx/html
-
-# Copiar archivo de configuración personalizado de Nginx
-#COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-# Exponer el puerto en el que Nginx está escuchando
 EXPOSE 80
 
-# Comando por defecto para ejecutar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "80"]
