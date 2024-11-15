@@ -38,12 +38,17 @@ export class LoginComponent {
   }
 
   async checkLogin(){
-    await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
-    if(this.authService.isAuthenticated()){
-      console.log('Login successful');
-      this.acces();
-    } else {
-      alert('Correo o contraseña incorrectos');
+    try {
+      await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+      if(this.authService.isAuthenticated()){
+        console.log('Login successful');
+        this.acces();
+      } else {
+        alert('Correo o contraseña incorrectos');
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+      alert('Ocurrió un error durante el inicio de sesión. Por favor, inténtelo de nuevo.');
     }
   }
 

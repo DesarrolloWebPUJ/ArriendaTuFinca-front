@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { ArrendadorNavbarComponent } from "../arrendador-navbar/arrendador-navbar.component";
 import { ArrendadorDTO } from '../../../common/models/ArrendadorDTO';
 import { ArrendadorService } from '../../../common/services/arrendador.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
 import { SolicitudService } from '../../../common/services/solicitud.service';
 import { SolicitudDTO } from '../../../common/models/solicitud/SolicitudDTO';
 import { FechaYHoraPipe } from "../../../common/pipes/fecha-yhora.pipe";
 import { AuthService } from '../../../common/services/auth.service';
 import { PropiedadCardComponent } from '../../../common/components/propiedad-card/propiedad-card.component';
-import { BasePropiedadDTO } from '../../../common/models/Propiedad/BasePropiedadDTO';
 import { SolicitudCardComponent } from "../../../common/components/solicitud-card/solicitud-card.component";
 import { PropiedadService } from '../../../common/services/propiedad.service';
 import { SimplePropiedadDTO } from '../../../common/models/Propiedad/SimplePropiedadDTO';
@@ -18,7 +16,7 @@ import { SolicitudStatus } from '../../../common/models/enums/SolicitudStatus';
 @Component({
   selector: 'app-arrendador-inicio',
   standalone: true,
-  imports: [ArrendadorNavbarComponent, CommonModule, RouterModule, FechaYHoraPipe, PropiedadCardComponent, SolicitudCardComponent],
+  imports: [NgIf, RouterModule, PropiedadCardComponent, SolicitudCardComponent],
   templateUrl: './arrendador-inicio.component.html',
   styleUrl: './arrendador-inicio.component.css'
 })

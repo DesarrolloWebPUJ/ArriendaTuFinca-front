@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import axios from 'axios';
+import axios from '../interceptors/axios-config';
 import { SolicitudDTO } from '../models/solicitud/SolicitudDTO';
 
 @Injectable({

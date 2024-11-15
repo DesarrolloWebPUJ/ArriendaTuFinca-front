@@ -1,17 +1,17 @@
-<app-arrendador-navbar></app-arrendador-navbar>
-
-<section class="solicitudes-section" *ngIf="solicitudesCargadas">
-    <h3>Solicitudes Recibidas</h3>
-
-    <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
-        <app-solicitud-card
-            [solicitudes]="this.solicitudes"
-            (solicitudActualizada)="actualizarSolicitudes()">
-        </app-solicitud-card>
-    </div>
-    <ng-template #noSolicitudes>
-        <div class="no-items-card">
-            <p>No han llegado solicitudes.</p>
+<div class="container">
+    <section class="solicitudes-section" *ngIf="solicitudesCargadas">
+        <h3>Solicitudes Recibidas</h3>
+    
+        <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
+            <app-solicitud-card
+                [solicitudes]="this.solicitudes"
+                (solicitudActualizada)="actualizarSolicitudes()">
+            </app-solicitud-card>
         </div>
-    </ng-template>
-</section>
+        <ng-template #noSolicitudes>
+            <div class="no-items-card">
+                <p>No han llegado solicitudes.</p>
+            </div>
+        </ng-template>
+    </section>
+</div>

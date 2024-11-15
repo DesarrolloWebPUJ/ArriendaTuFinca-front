@@ -18,8 +18,8 @@ import { SolicitudDetailsComponent } from './common/components/solicitud-details
 import { SolicitudesListComponent } from './arrendador/components/solicitudes-list/solicitudes-list.component';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent},
+    { path: 'login', component: LoginComponent, data: { hideNavbar: true }},
+    { path: 'signup', component: SignupComponent,data: { hideNavbar: true }},
     { path: 'arrendador', component: ArrendadorInicioComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/perfil', component: ArrendadorPerfilComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/solicitudes', component: SolicitudesListComponent, canActivate: [simpleAuthGuard]},

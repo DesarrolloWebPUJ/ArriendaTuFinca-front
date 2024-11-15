@@ -13,10 +13,20 @@
     height: 100vh; /* Altura completa de la ventana */
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    width: 100%; /* Asegurar que tome el ancho completo */
+    padding: 20px; /* Añadir padding para el contenido */
+}
+
 .solicitudes-section {
     margin-top: 40px;
     padding: 20px;
     overflow-y: auto;
+    width: 100%; /* Asegurar que tome el ancho completo */
+    max-width: 1000px; /* Limitar el ancho máximo */
 }
 
 .solicitudes-section h3 {
