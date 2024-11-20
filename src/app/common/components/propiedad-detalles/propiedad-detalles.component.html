@@ -1,24 +1,27 @@
 <div class="detalle-container">
-    <div class="detalle-header">
-      <img [src]="defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="detalle-imagen">
-      <div class="detalle-titulo">
-        <h2>{{ propiedad.nombrePropiedad }}</h2>
-        <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
-      </div>
+  <div class="detalle-header">
+    <img [src]="propiedad.fotos?.length ? propiedad.fotos[0].url : defaultPropiedadImagePath" alt="{{ propiedad.nombrePropiedad }}" class="detalle-imagen">
+    <div class="detalle-titulo">
+      <h2>{{ propiedad.nombrePropiedad }}</h2>
+      <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
     </div>
-    <div class="detalle-info">
-      <p><strong>Departamento:</strong> {{ propiedad.departamento }}</p>
-      <p><strong>Municipio:</strong> {{ propiedad.municipio }}</p>
-      <p><strong>Descripción:</strong> {{ propiedad.descripcionPropiedad }}</p>
-      <p><strong>Habitaciones:</strong> {{ propiedad.cantidadHabitaciones }}</p>
-      <p><strong>Baños:</strong> {{ propiedad.cantidadBanos }}</p>
-      <p><strong>Permite mascotas:</strong> {{ propiedad.permiteMascotas ? 'Sí' : 'No' }}</p>
-      <p><strong>Tiene piscina:</strong> {{ propiedad.tienePiscina ? 'Sí' : 'No' }}</p>
-      <p><strong>Tiene asador:</strong> {{ propiedad.tieneAsador ? 'Sí' : 'No' }}</p>
-      <p><strong>Valor por noche:</strong> {{ propiedad.valorNoche | costoDinero}}</p>
-    </div>
-    <!-- <div class="detalle-botones">
-      <button class="btn-reservar">Reservar</button>
-      <button class="btn-volver" (click)="volver()">Volver</button>
-    </div> -->
+  </div>
+  <div class="detalle-info">
+    <p><strong>Departamento:</strong> {{ propiedad.departamento }}</p>
+    <p><strong>Municipio:</strong> {{ propiedad.municipio }}</p>
+    <p><strong>Descripción:</strong> {{ propiedad.descripcionPropiedad }}</p>
+    <p><strong>Habitaciones:</strong> {{ propiedad.cantidadHabitaciones }}</p>
+    <p><strong>Baños:</strong> {{ propiedad.cantidadBanos }}</p>
+    <p><strong>Permite mascotas:</strong> {{ propiedad.permiteMascotas ? 'Sí' : 'No' }}</p>
+    <p><strong>Tiene piscina:</strong> {{ propiedad.tienePiscina ? 'Sí' : 'No' }}</p>
+    <p><strong>Tiene asador:</strong> {{ propiedad.tieneAsador ? 'Sí' : 'No' }}</p>
+    <p><strong>Valor por noche:</strong> {{ propiedad.valorNoche | costoDinero }}</p>
+  </div>
+  <div *ngIf="isArrendador" class="detalle-botones">
+    <h3>Subir nueva foto</h3>
+    <form (submit)="onUploadPhoto($event)">
+      <input type="file" (change)="onFileSelected($event)" />
+      <button type="submit">Subir Foto</button>
+    </form>
+  </div>
 </div>
