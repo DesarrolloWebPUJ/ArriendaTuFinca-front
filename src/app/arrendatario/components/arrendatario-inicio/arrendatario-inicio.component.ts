@@ -49,6 +49,16 @@ export class ArrendatarioInicioComponent {
   }
 
   private getSolicitudesMasRecientes(solicitudes: SolicitudDTO[]){
-    return solicitudes.slice(solicitudes.length - this.maxSolicitudes);
+    if (solicitudes.length > this.maxSolicitudes) {
+      return solicitudes.slice(solicitudes.length - this.maxSolicitudes);
+    }
+    return solicitudes.reverse();
+  }
+
+  actualizarSolicitudes() {
+    let idArrendatario = this.authService.getCurrentUser()?.idCuenta;
+    if (idArrendatario) {
+      this.loadSolicitudesData(idArrendatario);
+    }
   }
 }

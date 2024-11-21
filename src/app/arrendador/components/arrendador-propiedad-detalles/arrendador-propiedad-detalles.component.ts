@@ -5,16 +5,19 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../common/services/auth.service';
 import { PropiedadService } from '../../../common/services/propiedad.service';
 import { PropiedadDTO } from '../../../common/models/Propiedad/PropiedadDTO';
+import { SolicitudCardComponent } from "../../../common/components/solicitud-card/solicitud-card.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-arrendador-propiedad-detalles',
   standalone: true,
-  imports: [ArrendadorNavbarComponent, PropiedadDetallesComponent],
+  imports: [PropiedadDetallesComponent, SolicitudCardComponent, CommonModule],
   templateUrl: './arrendador-propiedad-detalles.component.html',
   styleUrl: './arrendador-propiedad-detalles.component.css'
 })
 export class ArrendadorPropiedadDetallesComponent implements OnInit{
-  propiedad: PropiedadDTO | undefined;
+  propiedad: PropiedadDTO = new PropiedadDTO();
+  isArrendador = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,5 +41,9 @@ export class ArrendadorPropiedadDetallesComponent implements OnInit{
 
   async loadPropiedad(propiedadId: number) {
     this.propiedad = await this.propiedadService.getPropiedad(propiedadId)
+  }
+
+  async actualizarSolicitudes(){
+    await this.loadPropiedad(this.propiedad.idPropiedad);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CuentaDTO } from '../models/CuentaDTO';
-import axios from 'axios';
+import axios from '../interceptors/axios-config';
 import { environment } from '../../../environments/environment';
 import { ArrendadorDTO } from '../models/ArrendadorDTO';
 

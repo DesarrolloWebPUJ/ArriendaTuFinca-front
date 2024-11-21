@@ -1,0 +1,33 @@
+<div class="form-container">
+  <h2>Crear Solicitud</h2>
+  <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+    <!-- Fecha de Inicio -->
+    <div class="form-group">
+      <label for="fechaInicio">Fecha de Inicio</label>
+      <input id="fechaInicio" type="date" formControlName="fechaInicio" required />
+      <small><div class="error-message" appFormFieldError [control]="solicitudForm.get('fechaInicio')!"></div></small>
+    </div>
+
+    <!-- Fecha Final -->
+    <div class="form-group">
+      <label for="fechaFinal">Fecha Final</label>
+      <input id="fechaFinal" type="date" formControlName="fechaFinal" required />
+      <small><div class="error-message" appFormFieldError [control]="solicitudForm.get('fechaFinal')!"></div></small>
+    </div>
+
+    <!-- Cantidad de Personas -->
+    <div class="form-group">
+      <label for="cantidadPersonas">Cantidad de Personas</label>
+      <input id="cantidadPersonas" type="number" formControlName="cantidadPersonas" placeholder="Número de personas" required min="1" />
+      <small><div class="error-message" appFormFieldError [control]="solicitudForm.get('cantidadPersonas')!"></div></small>
+    </div>
+
+
+    <!-- Botón de envío -->
+    <div class="button-container">
+      <button type="submit" [disabled]="!solicitudForm.valid">
+        Crear Solicitud
+      </button>
+    </div>
+  </form>
+</div>

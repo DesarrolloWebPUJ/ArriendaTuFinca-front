@@ -1,5 +1,3 @@
-<app-arrendador-navbar></app-arrendador-navbar>
-
 <div class="container">
     <section class="first-section">
         <h2>Detalles Propiedad</h2>
@@ -7,7 +5,23 @@
     
     <section class="propiedades-section">
         <app-propiedad-detalles
-            [propiedad]="this.propiedad">
+            [propiedad]="this.propiedad"
+            [isArrendador]="this.isArrendador">
         </app-propiedad-detalles>
+    </section>
+
+    <h3>Solicitudes Recibidas</h3>
+    <section class="propiedad-solicitudes-section">
+        <div *ngIf="propiedad.solicitudes.length > 0; else noSolicitudes">
+            <app-solicitud-card
+                [solicitudes]="propiedad.solicitudes.reverse()"
+                (solicitudActualizada)="actualizarSolicitudes()">
+            </app-solicitud-card>
+        </div>
+        <ng-template #noSolicitudes>
+            <div class="no-items-card">
+                <p>No han llegado solicitudes.</p>
+            </div>
+        </ng-template>
     </section>
 </div>

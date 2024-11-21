@@ -1,0 +1,18 @@
+.calificacion-form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  

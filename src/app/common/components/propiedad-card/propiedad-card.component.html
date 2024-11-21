@@ -5,14 +5,11 @@
         <p>Departamento: {{ propiedad.departamento }}</p>
         <p>Municipio: {{ propiedad.municipio }}</p>
         <p>Calificación: {{ propiedad.puntajePromedio }}/5</p>
+        
         <div class="botones">
-            <div *ngIf="isArrendador; else botonesArrendatario" class="botones-arrendador">
-                <a [routerLink]="['/arrendador/propiedades/editar', propiedad.idPropiedad]" class="btn-editar">Editar</a>
-                <a [routerLink]="['/arrendador/propiedades', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
-            </div>
-            <ng-template #botonesArrendatario>
-                <a [routerLink]="['/arrendatario/propiedades/propiedad', propiedad.idPropiedad]" class="btn-detalles">Ver detalles</a>
-            </ng-template>
+            <app-propiedad-botones 
+                [propiedad]="propiedad">
+            </app-propiedad-botones>
         </div>
     </div>
 </div>

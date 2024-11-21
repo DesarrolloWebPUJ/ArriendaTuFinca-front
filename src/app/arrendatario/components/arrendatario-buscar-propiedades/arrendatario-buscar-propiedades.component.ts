@@ -6,6 +6,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PropiedadService } from '../../../common/services/propiedad.service';
+import { SimplePropiedadDTO } from '../../../common/models/Propiedad/SimplePropiedadDTO';
 
 @Component({
   selector: 'app-arrendatario-buscar-propiedades',
@@ -16,8 +17,8 @@ import { PropiedadService } from '../../../common/services/propiedad.service';
 })
 export class ArrendatarioBuscarPropiedadesComponent implements OnInit{
   searchForm!: FormGroup;
-  propiedades: BasePropiedadDTO[] = [];
-  filteredPropiedades: BasePropiedadDTO[] = [];
+  propiedades: SimplePropiedadDTO[] = [];
+  filteredPropiedades: SimplePropiedadDTO[] = [];
   departamentos: String[] = [];
   municipios: String[] = [];
 

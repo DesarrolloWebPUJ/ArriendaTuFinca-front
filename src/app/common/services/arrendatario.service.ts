@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { CuentaDTO } from '../models/CuentaDTO';
 import { ArrendatarioDTO } from '../models/ArrendatarioDTO';
-import axios from 'axios';
+import axios from '../interceptors/axios-config';
 
 @Injectable({
   providedIn: 'root'

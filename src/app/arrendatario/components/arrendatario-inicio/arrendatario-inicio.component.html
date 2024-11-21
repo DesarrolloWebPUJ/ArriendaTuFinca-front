@@ -1,5 +1,3 @@
-<app-arrendatario-navbar></app-arrendatario-navbar>
-
 <div class="container">
     <main class="main-container">
         <section class="welcome-section">
@@ -12,7 +10,8 @@
     
             <div *ngIf="solicitudes && solicitudes.length > 0; else noSolicitudes">
                 <app-solicitud-card
-                    [solicitudes]="this.solicitudes">
+                    [solicitudes]="this.solicitudes"
+                    (solicitudActualizada)="actualizarSolicitudes()">
                 </app-solicitud-card>
             </div>
             <ng-template #noSolicitudes>

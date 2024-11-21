@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:host {
+    background-color: #F5F5F5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    width: 100%; /* Asegurar que tome el ancho completo */
+    padding: 20px; /* Añadir padding para el contenido */
+}
+
+.solicitudes-section {
+    margin-top: 40px;
+    padding: 20px;
+    overflow-y: auto;
+    width: 100%; /* Asegurar que tome el ancho completo */
+    max-width: 1000px; /* Limitar el ancho máximo */
+}
+
+.solicitudes-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los mensajes de no propiedades y no solicitudes */
+.no-items-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.no-items-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #777;
+}

@@ -4,13 +4,11 @@
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    position: relative;
 }
 
 .solicitud-card h4 {
     font-size: 18px;
     color: #2E7D32;
-    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -20,35 +18,36 @@
     margin-bottom: 5px;
 }
 
-.solicitud-card .btn-detalles {
-    position: absolute; 
-    bottom: 20px; 
-    right: 20px; 
+.solicitud-card .botones {
+    display: flex;
+    justify-content: flex-end;
+    bottom: 20px;
+    right: 20px;
+    text-decoration: none;
 }
 
-.estado {
+/* Estilos para los estados */
+.estado-pendiente {
+    color: #FFA000;
     font-weight: bold;
 }
 
-.estado-pendiente {
-    color: #FFA000;
-}
-
 .estado-aceptada {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.estado-rechazada {
+    color: #F44336;
+    font-weight: bold;
+}
+
+.estado-calificacion {
+    color: #FF5722;
+    font-weight: bold;
+}
+
+.estado-finalizada {
     color: #2E7D32;
-}
-
-.btn-detalles {
-    display: inline-block;
-    color: white;
-    padding: 10px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 1;
-    background-color: #388E3C; /* Verde oscuro */
-}
-
-.btn-detalles:hover {
-    background-color: #2E7D32; /* Verde más oscuro */
+    font-weight: bold;
 }

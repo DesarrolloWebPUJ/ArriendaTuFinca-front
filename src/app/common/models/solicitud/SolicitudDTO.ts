@@ -4,24 +4,11 @@ import { SimplePropiedadDTO } from "../Propiedad/SimplePropiedadDTO";
 import { BaseSolicitudDTO } from "./BaseSolicitudDTO";
 
 export class SolicitudDTO extends BaseSolicitudDTO {
-    arrendatario: CuentaDTO;
-    propiedad: SimplePropiedadDTO;
+    arrendatario?: CuentaDTO;
+    propiedad?: SimplePropiedadDTO;
 
-    constructor(idSolicitud: number,
-        fechaInicio: string,
-        fechaFin: string,
-        fechaCreacion: string,
-        cantidadPersonas: number,
-        valor: number,
-        arrendadorCalificado: boolean,
-        arrendatarioCalificado: boolean,
-        propiedadCalificado: boolean,
-        estadoSolicitud: EstadoSolicitudDTO,
-        arrendatario: CuentaDTO,
-        propiedad: SimplePropiedadDTO
-    ) {
-        super(idSolicitud, new Date(fechaInicio), new Date(fechaFin), new Date(fechaCreacion), cantidadPersonas, valor, arrendadorCalificado, arrendatarioCalificado, propiedadCalificado, estadoSolicitud);
-        this.arrendatario = arrendatario;
-        this.propiedad = propiedad;
+    constructor(init?: Partial<SolicitudDTO>) {
+        super(init);
+        Object.assign(this, init);
     }
 }

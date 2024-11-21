@@ -1,0 +1,25 @@
+<div class="crear-solicitud-form">
+    <h2>Crear Solicitud de Arriendo</h2>
+    <form (ngSubmit)="enviarSolicitud()" #solicitudForm="ngForm">
+        <label for="fecha-inicio">Fecha de Inicio:</label>
+        <input type="datetime-local" id="fecha-inicio" [(ngModel)]="formFechaInicio" name="fechaInicio" required #fechaInicio="ngModel">
+        <div *ngIf="fechaInicio.invalid && (fechaInicio.dirty || fechaInicio.touched)">
+            <div *ngIf="fechaInicio.errors?.['required']">La fecha de inicio es requerida.</div>
+        </div>
+
+        <label for="fecha-final">Fecha Final:</label>
+        <input type="datetime-local" id="fecha-final" [(ngModel)]="formFechaFinal" name="fechaFinal" required #fechaFinal="ngModel">
+        <div *ngIf="fechaFinal.invalid && (fechaFinal.dirty || fechaFinal.touched)">
+            <div *ngIf="fechaFinal.errors?.['required']">La fecha final es requerida.</div>
+        </div>
+
+        <label for="cantidad-personas">Cantidad de Personas:</label>
+        <input type="number" id="cantidad-personas" [(ngModel)]="solicitud.cantidadPersonas" name="cantidadPersonas" min="1" required #cantidadPersonas="ngModel">
+        <div *ngIf="cantidadPersonas.invalid && (cantidadPersonas.dirty || cantidadPersonas.touched)">
+            <div *ngIf="cantidadPersonas.errors?.['required']">La cantidad de personas es requerida.</div>
+            <div *ngIf="cantidadPersonas.errors?.['min']">La cantidad de personas debe ser al menos 1.</div>
+        </div>
+
+        <button type="submit" class="btn-detalles" [disabled]="solicitudForm.invalid">Enviar Solicitud</button>
+    </form>
+</div>

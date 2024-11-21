@@ -76,7 +76,6 @@ export class PropiedadFormComponent implements OnInit{
           nombre: propiedad.nombrePropiedad,
           descripcion: propiedad.descripcionPropiedad,
           municipio: propiedad.municipio,
-          departamento: propiedad.departamento,
           tipoIngreso: propiedad.tipoIngreso,
           habitaciones: propiedad.cantidadHabitaciones,
           baños: propiedad.cantidadBanos,
@@ -85,6 +84,7 @@ export class PropiedadFormComponent implements OnInit{
           asador: propiedad.tieneAsador,
           valorNoche: propiedad.valorNoche
         });
+        this.propiedadForm.get('departamento')?.setValue(propiedad.departamento);
         this.propiedadForm.get('municipio')?.setValue(propiedad.municipio);
         this.propiedadInicializada = true;
       }
@@ -108,10 +108,10 @@ export class PropiedadFormComponent implements OnInit{
   async onDepartamentoChange(departamento: String) {
     if (departamento) {
       console.log('Departamento seleccionado:', this.departamentoSeleccionado);
-      this.municipios = await this.propiedadService.getMunicipios(departamento);
-      if (!this.propiedadInicializada || !this.editMode) {
+      if (this.propiedadInicializada || !this.editMode) {
         this.propiedadForm.get('municipio')!.reset(); 
       }
+      this.municipios = await this.propiedadService.getMunicipios(departamento);
     }
   }
 
@@ -128,24 +128,22 @@ export class PropiedadFormComponent implements OnInit{
   }
 
   getPropiedad(arrendador: CuentaDTO): SimplePropiedadDTO{
-    return new SimplePropiedadDTO(
-      this.propiedadId ? this.propiedadId : 0,
-      this.propiedadForm.get('nombre')?.value,
-      this.propiedadForm.get('descripcion')?.value,
-      this.propiedadForm.get('municipio')?.value,
-      this.propiedadForm.get('departamento')?.value,
-      this.propiedadForm.get('tipoIngreso')?.value,
-      this.propiedadForm.get('habitaciones')?.value,
-      this.propiedadForm.get('baños')?.value,
-      this.propiedadForm.get('mascotas')?.value,
-      this.propiedadForm.get('piscina')?.value,
-      this.propiedadForm.get('asador')?.value,
-      this.propiedadForm.get('valorNoche')?.value,
-      'Activa',
-      0,
-      0,
-      arrendador
-    );
+    let nuevaPropiedad = new SimplePropiedadDTO();
+    nuevaPropiedad.idPropiedad = this.propiedadId ?? 0;
+    nuevaPropiedad.arrendador = arrendador;
+    nuevaPropiedad.nombrePropiedad = this.propiedadForm.get('nombre')?.value;
+    nuevaPropiedad.descripcionPropiedad = this.propiedadForm.get('descripcion')?.value;
+    nuevaPropiedad.departamento = this.propiedadForm.get('departamento')?.value;
+    nuevaPropiedad.municipio = this.propiedadForm.get('municipio')?.value;
+    nuevaPropiedad.tipoIngreso = this.propiedadForm.get('tipoIngreso')?.value;
+    nuevaPropiedad.cantidadHabitaciones = this.propiedadForm.get('habitaciones')?.value;
+    nuevaPropiedad.cantidadBanos = this.propiedadForm.get('baños')?.value;
+    nuevaPropiedad.permiteMascotas = this.propiedadForm.get('mascotas')?.value;
+    nuevaPropiedad.tienePiscina = this.propiedadForm.get('piscina')?.value;
+    nuevaPropiedad.tieneAsador = this.propiedadForm.get('asador')?.value;
+    nuevaPropiedad.valorNoche = this.propiedadForm.get('valorNoche')?.value;
+    
+    return nuevaPropiedad;
   }
 
   async sendForm(propiedad: SimplePropiedadDTO){

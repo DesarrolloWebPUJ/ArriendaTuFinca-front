@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CuentaDTO } from '../models/CuentaDTO';
 import { environment } from '../../../environments/environment';
-import axios from 'axios';
 import { ArrendadorService } from './arrendador.service';
 import { Router } from '@angular/router';
 import { UserRole } from '../models/enums/UserRole';
+import { jwtDecode } from 'jwt-decode';
+import axios from '../interceptors/axios-config';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,26 @@ export class AuthService {
   ) { }
 
   async login(email: string, contrasena: string) {
-    const response = await axios.post<CuentaDTO>(environment.apiUrl + '/cuenta/login', { email, contrasena });
-    //this.setToken(response.headers['authorization']);
-    await this.findLoginUserRole(response.data);
+    const response = await axios.post<string>(environment.apiUrl + '/auth/login', { email, contrasena });
+    this.setToken(response.data);
+    //await this.findLoginUserRole(response.data);
+  }
+
+  private async setToken(token: string) {
+    if (this.isLocalStorageAvailable) {
+      localStorage.setItem(this.tokenKey, token);
+      this.getUserDetails(token);
+    }
+  }
+
+  private getUserDetails(token: string){
+    let data: any = jwtDecode(token);
+    let cuenta = new CuentaDTO();
+    cuenta.idCuenta = data.id;
+    cuenta.email = data.email;
+    cuenta.nombreCuenta = data.nombre;
+    let rol = data.rol;
+    this.setCurrentUser(cuenta, rol);
   }
 
   private async findLoginUserRole(user: CuentaDTO){
@@ -76,9 +94,25 @@ export class AuthService {
     }
   }
 
+  getToken(): string | null {
+    if (this.isLocalStorageAvailable) {
+      return localStorage.getItem(this.tokenKey);
+    }
+    return null;
+  }
+
+  private removeToken() {
+    if (this.isLocalStorageAvailable) {
+      localStorage.removeItem(this.tokenKey);
+    }
+  }
+
   isAuthenticated(): boolean {
     return this.getCurrentUser() !== null;
   }
 
+  isArrendador(): boolean {
+    return this.getUserRole() === UserRole.Arrendador;
+  }
 
 }

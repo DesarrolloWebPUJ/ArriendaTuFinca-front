@@ -1,0 +1,23 @@
+<div class="calificacion-form">
+    <h2>Calificar Finca o Arrendatario</h2>
+    <form (ngSubmit)="submitForm()" [formGroup]="calificacionForm">
+      <!-- Calificación (estrellas o un selector) -->
+      <div class="form-group">
+        <label for="rating">Calificación</label>
+        <select id="rating" formControlName="rating" required>
+          <option value="" disabled selected>Selecciona una calificación</option>
+          <option *ngFor="let star of [1, 2, 3, 4, 5]" [value]="star">{{ star }} estrella(s)</option>
+        </select>
+      </div>
+  
+      <!-- Comentarios -->
+      <div class="form-group">
+        <label for="comment">Comentarios</label>
+        <textarea id="comment" formControlName="comment" placeholder="Escribe tu comentario" rows="5" required></textarea>
+      </div>
+  
+      <!-- Botón Enviar -->
+      <button type="submit" [disabled]="calificacionForm.invalid">Enviar Calificación</button>
+    </form>
+  </div>
+  
