@@ -1,0 +1,15 @@
+<div>
+  <h2>Calificaciones Pendientes</h2>
+  <div *ngIf="calificacionesPendientes.length === 0">
+    <p>No hay calificaciones pendientes.</p>
+  </div>
+  <ul>
+    <li *ngFor="let calificacion of calificacionesPendientes">
+      <p><strong>Propiedad:</strong> {{ calificacion.propiedad.nombre }}</p>
+      <p><strong>Arrendatario:</strong> {{ calificacion.calificado.nombre }}</p>
+      <button [routerLink]="['/calificar', calificacion.idCalificacion]">
+        Calificar
+      </button>
+    </li>
+  </ul>
+</div>

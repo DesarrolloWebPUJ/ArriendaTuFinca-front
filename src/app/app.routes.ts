@@ -16,7 +16,8 @@ import { ArrendatarioSolicitudDetailsComponent } from './arrendatario/components
 import { SolicitudCreateComponent } from './arrendatario/components/solicitud-create/solicitud-create.component';
 import { SolicitudDetailsComponent } from './common/components/solicitud-details/solicitud-details.component';
 import { SolicitudesListComponent } from './arrendador/components/solicitudes-list/solicitudes-list.component';
-
+import { CalificarComponent } from './arrendador/components/calificacion/calificar/calificacion.component';
+import { CalificacionesPendientesComponent } from './arrendador/components/calificacion/calificaciones-pendientes.component';
 export const routes: Routes = [
     { path: 'login', component: LoginComponent, data: { hideNavbar: true }},
     { path: 'signup', component: SignupComponent,data: { hideNavbar: true }},
@@ -35,5 +36,8 @@ export const routes: Routes = [
     { path: 'arrendatario/solicitud/:id', component: ArrendatarioSolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendatario/solicitar/propiedad/:id', component: SolicitudFormComponent, canActivate: [simpleAuthGuard]},
     { path: 'arrendador/solicitud/:id', component: SolicitudDetailsComponent, canActivate: [simpleAuthGuard]},
+    { path: 'arrendador/calificaciones-pendientes', component: CalificacionesPendientesComponent },
+    { path: 'arrendador/:id/calificaciones', component: CalificarComponent },
+    { path: '**', redirectTo: 'calificaciones-pendientes' },
     { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

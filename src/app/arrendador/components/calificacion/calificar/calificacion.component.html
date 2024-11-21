@@ -1,0 +1,15 @@
+<div *ngIf="calificaciones.length > 0; else noCalificaciones">
+  <h2>Calificaciones Pendientes</h2>
+  <div *ngFor="let calificacion of calificaciones">
+    <p><strong>Propiedad:</strong> {{ calificacion.propiedad.nombre }}</p>
+    <p><strong>Comentario:</strong> {{ calificacion.comentario }}</p>
+    <p><strong>Puntaje:</strong> {{ calificacion.puntaje }}</p>
+    <button [routerLink]="['/calificar', calificacion.idCalificacion]">
+      Calificar
+    </button>
+  </div>
+</div>
+
+<ng-template #noCalificaciones>
+  <p>No tienes calificaciones pendientes.</p>
+</ng-template>
