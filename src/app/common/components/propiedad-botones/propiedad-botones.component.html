@@ -3,6 +3,10 @@
     <a *ngIf="mostrarBotonEditar()"
     [routerLink]="['/arrendador/propiedades/editar', propiedad.idPropiedad]" class="btn-editar"
     >Editar</a>
+
+    <a *ngIf="mostrarBotonEliminar()"
+    (click)="eliminarPropiedad()" class="btn-eliminar"
+    >Eliminar</a>
     
     <a *ngIf="mostrarArrendadorVerDetalles()"
     [routerLink]="['/arrendador/propiedades', propiedad.idPropiedad]" class="btn-detalles"

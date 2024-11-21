@@ -17,11 +17,18 @@
     <p><strong>Tiene asador:</strong> {{ propiedad.tieneAsador ? 'Sí' : 'No' }}</p>
     <p><strong>Valor por noche:</strong> {{ propiedad.valorNoche | costoDinero }}</p>
   </div>
-  <div *ngIf="isArrendador" class="detalle-botones">
+  <div *ngIf="isArrendador" class="subir-foto">
     <h3>Subir nueva foto</h3>
     <form (submit)="onUploadPhoto($event)">
       <input type="file" (change)="onFileSelected($event)" />
       <button type="submit">Subir Foto</button>
     </form>
+  </div>
+
+  <div class="detalle-fotos" *ngIf="fotos.length">
+    <h3>Fotos de la propiedad</h3>
+    <div class="galeria-fotos">
+      <img *ngFor="let foto of fotos" [src]="foto" alt="Foto de {{ propiedad.nombrePropiedad }}" class="galeria-imagen">
+    </div>
   </div>
 </div>

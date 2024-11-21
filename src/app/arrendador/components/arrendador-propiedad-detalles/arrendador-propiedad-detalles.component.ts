@@ -11,12 +11,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-arrendador-propiedad-detalles',
   standalone: true,
-  imports: [ArrendadorNavbarComponent, PropiedadDetallesComponent, SolicitudCardComponent, CommonModule],
+  imports: [PropiedadDetallesComponent, SolicitudCardComponent, CommonModule],
   templateUrl: './arrendador-propiedad-detalles.component.html',
   styleUrl: './arrendador-propiedad-detalles.component.css'
 })
 export class ArrendadorPropiedadDetallesComponent implements OnInit{
   propiedad: PropiedadDTO = new PropiedadDTO();
+  isArrendador = true;
 
   constructor(
     private route: ActivatedRoute,

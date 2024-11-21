@@ -21,10 +21,19 @@ button, a {
     background-color: #1976D2; /* Azul */
 }
 
+.btn-eliminar {
+    background-color: #D32F2F; /* Rojo */
+}
+
 .btn-detalles:hover {
     background-color: #2E7D32; /* Verde más oscuro */
 }
 
 .btn-editar:hover, .btn-solicitar:hover {
     background-color: #1565C0; /* Azul más oscuro */
+}
+
+.btn-eliminar:hover {
+    background-color: #C62828; /* Rojo más oscuro */
+    cursor: pointer;
 }
